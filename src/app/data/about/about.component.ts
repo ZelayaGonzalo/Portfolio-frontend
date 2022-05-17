@@ -49,7 +49,7 @@ export class AboutComponent implements OnInit {
 
   ngOnInit(): void {
     this.isAdmin = this.tokenService.isAdmin()
-    this.backupLastname = this.name
+    this.backupName = this.name
     this.backupLastname = this.lastName
     this.backupRole = this.role
     this.backupPhoto = this.photo

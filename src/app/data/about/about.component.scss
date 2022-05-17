@@ -71,6 +71,9 @@ $text:white;
             margin: 0 10px;
         }
     }
+    .cancel{
+        right: calc(35% - 45px);
+    }
 }
 .pop-up{
     z-index: 3;
