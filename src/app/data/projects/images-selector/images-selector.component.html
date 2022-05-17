@@ -1,0 +1,25 @@
+<h3 class="title">
+    Agregar o Eliminar imagenes
+</h3>
+<button class="edit-button cancel" (click)="onCancel()">
+    <fa-icon [icon]="faArrowLeft"></fa-icon>
+</button>
+<div class="add">
+    <button class="edit-button" (click)="isAddingImage = true"><fa-icon [icon]="faImage"></fa-icon><fa-icon [icon]="faCirclePlus" class="mini"></fa-icon></button>
+</div>
+<ul class="images-list" *ngIf="images.length > 0" >
+    <li *ngFor="let image of images;let i = index">
+        <img [src]="image.url" alt="Imagen no valida">
+        <div class="edit-button" (click)="onRemoveImage(i)"><fa-icon [icon]="faTrash"></fa-icon></div>
+    </li>
+</ul>
+<div class="images-empty" *ngIf="images.length <= 0">
+    Lista vacia
+</div>
+<div class="buttons">
+    <button class="edit-button" (click)="onSaveSelection()"><fa-icon [icon]="faFloppyDisk"></fa-icon></button>
+    <button class="edit-button cancel" (click)="onCancel()"><fa-icon [icon]="faXmark"></fa-icon></button>
+</div>
+
+<app-image-prompt class="pop-up" *ngIf="isAddingImage" (closeWindow)="isAddingImage = false"  (selectedImage)="onAddImage($event)" [@zoominAnimation]></app-image-prompt>
+

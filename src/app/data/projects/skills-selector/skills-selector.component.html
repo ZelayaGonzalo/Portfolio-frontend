@@ -1,0 +1,22 @@
+<h3 class="title">
+    Seleccione las tecnologias usadas:
+</h3>
+<button class="edit-button cancel" (click)="onCancel()">
+    <fa-icon [icon]="faArrowLeft"></fa-icon>
+</button>
+<ul class="skills-list" *ngIf="!errorSkills">
+    <li class="skill" *ngFor="let skill of skills" [ngClass]="isSelected(skill) ?'selected':''" (click)="onSelectSkill(skill)">
+        <div class="skill-circle">
+            <img [src]="skill.icon">
+        </div>
+        <p class="skill-name">{{skill.name}}</p>
+    </li>
+    <ngx-spinner name="skill-selection-spinner" type="ball-spin-clockwise" [fullScreen]="false" bdColor="#1C1B1F"></ngx-spinner>
+</ul>
+<div class="skills-list" *ngIf="errorSkills">
+    <p>Error obteniendo tus habilidades</p>
+</div>
+<div class="buttons">
+    <button class="edit-button" (click)="onSaveSelection()"><fa-icon [icon]="faFloppyDisk"></fa-icon></button>
+    <button class="edit-button cancel" (click)="onResetSelection()"> <fa-icon [icon]="faXmark"></fa-icon></button>
+</div>

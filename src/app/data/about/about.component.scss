@@ -1,0 +1,141 @@
+$black-background:#1C1B1F;
+$main:#EE6C4D;
+$text:white;
+
+.about-me{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $black-background;
+    width: 100%;
+    color: $text;   
+    .intro{
+        display: flex;
+        flex-direction: row;
+        align-items: space-between;
+        width: 100%;
+        .profile{
+            width: 20%;
+            min-width: 200px;
+            max-width: 300px;
+            .photo{
+                position: relative;
+                .edit-image{
+                    opacity: 0;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    bottom: 0;
+                    background-color: rgba(51, 51, 51, 0.555);
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    color: $main;
+                    font-size: 25px;
+                    transition: 0.3s;
+                    &:hover{
+                        opacity: 1;
+                    }
+                }
+            }
+            .avatar{
+                height: 140px;
+                width: 140px;
+                border-radius: 50%;
+            }
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .name{
+                margin: 10px 0;
+                font-weight: 700;
+            }
+            .edit-name{
+                display: flex;
+                justify-content: space-between;
+                input{
+                    width: 48%;
+                }
+            }
+        }
+        .text-intro{
+            text-align: left;
+            padding: 30px 50px;
+        }
+        .text-field{
+            width: 80%;
+            border: 2px solid white;
+            margin: 0 10px;
+        }
+    }
+}
+.pop-up{
+    z-index: 3;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width:1024px){
+    .about-me{
+        .intro{
+            flex-direction: column;
+            align-items: center;
+            .profile{
+                margin: 15px 0;
+            }
+        }
+    }
+}
+
+@media (max-width:600px){
+    .about-me{
+        .intro{
+            .profile{
+                margin: 15px 0;
+                font-size: 14px;
+                .photo{
+                    .edit-image{
+                        opacity: 1;
+                    }
+                }
+                .avatar{
+                    height: 100px;
+                    width: 100px;
+                }
+            }
+            .text-intro{
+                text-align: left;
+                padding: 10px;
+                font-size: 13px;
+            }
+            .text-field{
+                width: 80%;
+                height: 200px;
+                border: 2px solid white;
+                margin: 0 10px;
+                font-size: 13px;
+            }
+        }
+        .cancel{
+            top: 60px;
+            right: 2%;
+        }
+
+    }
+}
+
+@media (min-width:1024px){
+    .about-me{
+        .intro{
+            .text-intro{
+                min-width: 500px;
+            }
+        }
+    }
+}

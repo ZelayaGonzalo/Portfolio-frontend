@@ -1,0 +1,27 @@
+<section class="landing-page" [style]="'background-image: url('+banner+')'">
+    <div class="main">
+        <h1 class="intro">
+            HOLA, MI NOMBRE ES <span *ngIf="!isEditing" class="name">{{name}}</span>
+            <input type="text" name="name" *ngIf="isEditing" [(ngModel)]="name"><br>
+            Y SOY <span *ngIf="!isEditing" class="name">{{role}}</span>
+            <input type="text" name="name" *ngIf="isEditing" [(ngModel)]="role">
+        </h1>
+    </div>
+    <div class="background">
+    </div>
+    <button class="edit-button" *ngIf="isAdmin && !isEditing" (click)="onStartEdition()">
+        <fa-icon [icon]="faPen" ></fa-icon>
+    </button>
+    <button class="edit-button" (click)="onSave()" *ngIf="isAdmin && isEditing">
+        <fa-icon [icon]="faFloppyDisk" ></fa-icon>
+    </button>
+    <button class="edit-button cancel" (click)="onCancel()" *ngIf="isAdmin && isEditing">
+        <fa-icon [icon]="faXmark" ></fa-icon>
+    </button>
+    <button class="edit-button edit-image" *ngIf="isAdmin && isEditing" (click)="onAddBanner()">
+        <fa-icon [icon]="faImage" ></fa-icon>
+    </button>
+    <ngx-spinner name="banner-spinner" type="ball-spin-clockwise" [fullScreen]="false" bdColor="#1C1B1F"></ngx-spinner>
+</section>
+
+<app-image-prompt [@zoominAnimation] *ngIf="isAddingImage" [isBanner]="true" (closeWindow)="closeBannerWindow($event)" (selectedImage)="receiveBanner($event)" class="pop-up"></app-image-prompt>

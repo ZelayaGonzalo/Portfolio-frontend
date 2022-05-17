@@ -1,0 +1,140 @@
+$black-background:#1C1B1F;
+$main:#EE6C4D;
+
+.landing-page{
+    height: 25vw;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../../assets/Icons/emile-perron-xrVDYZRGdw4-unsplash.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment:scroll;
+    color: white;
+    .main{
+        width: 50%;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: transparent;
+        .intro{
+            position: relative;
+            z-index: 2;
+            font-size: 2.1vw;
+            font-weight: 600;
+            line-height: normal;
+            background-color: transparent;
+            .name{
+                color: $main;
+                text-transform: uppercase;
+                background-color: transparent;
+            }
+            input{
+                display: inline;
+                font-size:inherit;
+                font-weight: inherit;
+                width: 40%;
+                color: $main;
+                text-transform: uppercase;
+                background-color: transparent;
+            }
+        }
+        .buttons{
+            display: flex;
+            justify-content: center;
+            li{
+                margin: 0 5px;
+            }
+            button{
+                cursor: pointer;
+                border: white 2px solid;
+                border-radius: 8px;
+                background-color: transparent;
+                padding: 10px;
+                font-size: 20px;
+                font-weight: bold;
+                &:hover{
+                    background-color: $main;
+                }
+            }
+        }
+    }
+    .background{
+        z-index: 1;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(0deg, rgba(28,27,31,1) 0%, rgba(28,27,31,1) 10%, rgba(28,27,31,0.298739564185049) 50%, rgba(28,27,31,1) 90%); 
+        
+    }
+  
+    .save{
+        position: absolute;
+        font-weight: bold;
+        z-index: 2;
+        bottom: 50px;
+        width: 60px;
+        height: 40px;
+        background-color: $main;
+        border: 2px solid white;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+    .edit-button{
+        top: 65px;
+        right: 50%;
+    }
+    .edit-image{
+        left: 20px;
+        top: 80px;
+    }
+    .cancel{
+        right: calc(50% - 45px);
+    }
+    
+}
+.pop-up{
+    z-index: 3;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+@media (max-width:1024px){
+    .landing-page{
+        height: 40vw;
+        .main{
+            width: 60%;
+            .intro{
+                font-size: 20px;
+                text-align: center;
+            }
+        }
+        
+    }
+}
+
+@media (max-width:600px){
+    .landing-page{
+        height: 220px;
+        .main{
+            width: 90%;
+            .intro{
+                font-size: 16px;
+                text-align: center;
+            }
+        }
+        .edit-button{
+            top: 80px;
+            right: 2%;
+        }
+        .cancel{
+            top: 120px;
+            right: 2%;
+        }
+    }
+}

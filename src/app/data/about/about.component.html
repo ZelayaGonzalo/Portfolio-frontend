@@ -1,0 +1,40 @@
+<section class="about-me text-width">
+    <h1 class="title">
+        SOBRE MI
+    </h1>
+    <div class="intro">
+        <figure class="profile">
+            <div class="photo">
+                <img class="avatar" [src]="photo">
+                <div class="edit-image" *ngIf="isAdmin && isEditing" (click)="addImage()">
+                    <fa-icon [icon]="faImage"></fa-icon>
+                </div>
+            </div>
+            <figcaption *ngIf="!isEditing" class="name">{{name}} {{lastName}}</figcaption>
+            <div class="name edit-name" *ngIf="isEditing">
+                <input type="text" class="edit-field" [(ngModel)]="name">
+                <input type="text" class="edit-field" [(ngModel)]="lastName">
+            </div>
+            <figcaption *ngIf="!isEditing">{{role}}</figcaption>
+            <input *ngIf="isEditing" class="edit-field" type="text" [(ngModel)]="role">
+        </figure>
+        
+        <p *ngIf="!isEditing" class="text-intro">
+            {{description}}
+        </p>
+        <textarea *ngIf="isEditing" class="text-intro edit-field text-field" [(ngModel)]="description"></textarea>
+       
+    </div>
+    <button class="edit-button" *ngIf="isAdmin && !isEditing" (click)="onStartEdition()">
+        <fa-icon [icon]="faPen" ></fa-icon>
+    </button>
+    <button class="edit-button" (click)="onSave()" *ngIf="isAdmin && isEditing">
+        <fa-icon [icon]="faFloppyDisk" ></fa-icon>
+    </button>
+    <button class="edit-button cancel" (click)="onCancel()" *ngIf="isAdmin && isEditing">
+        <fa-icon [icon]="faXmark" ></fa-icon>
+    </button>
+    <ngx-spinner name="about-spinner" type="ball-spin-clockwise" [fullScreen]="false" bdColor="#1C1B1F"></ngx-spinner>
+</section>
+
+<app-image-prompt *ngIf="isAddingImage" [isBanner]="true" (closeWindow)="closeImageWindow($event)" (selectedImage)="receivePhoto($event)" class="pop-up" [@zoominAnimation]></app-image-prompt>

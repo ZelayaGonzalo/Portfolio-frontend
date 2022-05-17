@@ -1,0 +1,8 @@
+<div class="index-container" *ngIf="data.id">
+    <app-banner id="home" [name]="data.name" [banner]="data.banner" [role]="data.role" style="width: 100%;" (updated)="onUpdated($event)"></app-banner>
+    <app-about id="about" [name]="data.name" [description]="data.description" [photo]="data.photo" [role]="data.role" [lastName]="data.lastName" class="max-width" (updated)="onUpdated($event)"></app-about>
+    <app-skills id="skills" [skills]="data.skills" (updated)="onUpdated($event)"></app-skills>
+   <app-projects id="projects" [projects]="data.projects" (reloadData)="onUpdated($event)"></app-projects>
+   <app-footer style="width: 100%;"></app-footer>
+</div>
+<ngx-spinner [name]="'main-spinner'" [fullScreen]="true" type="ball-spin-clockwise" size="large" bdColor="#1C1B1F"></ngx-spinner>

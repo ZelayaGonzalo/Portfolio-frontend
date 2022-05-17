@@ -1,0 +1,108 @@
+<div class="nav-container">
+    <div class="logo item">
+       <img src="../../../assets/Icons/APLogo-20-20.webp">
+       <p >#YoProgramo</p>
+    </div>
+    <ul class="links item">
+        <li >
+            <a (click)="onSelect(0)" href="#home">Inicio</a>
+            <div [ngClass]="selected === 0 ? 'selected':'hide'"></div>
+        </li>
+        <li >
+            <a  (click)="onSelect(1)" href="#about" >Sobre mi</a>
+            <div [ngClass]="selected === 1 ? 'selected':'hide'"></div>
+        </li>
+        <li >
+            <a href="#skills" (click)="onSelect(2)">Habilidades</a>
+            <div [ngClass]="selected === 2 ? 'selected':'hide'"></div>
+        </li>
+        <li >
+            <a href="#projects" (click)="onSelect(3)">Proyectos</a>
+            <div [ngClass]="selected === 3 ? 'selected':'hide'"></div>
+        </li>
+    </ul>
+    <button class="mobile-hamburguer item" (click)="toogleMobileMenu()">
+        <img src="../../../assets/Icons/APOnlyLogo.png">
+    </button>
+    <div class="login item" (click)="onShowLogin()" *ngIf="!isLogged">
+        <button>Iniciar Sesion</button>
+    </div>
+    <div class="logged item" *ngIf="isLogged" (click)="onShowLogin()">
+        <p>{{user}}</p><fa-icon [icon]="faUser"></fa-icon>
+    </div>
+    <div *ngIf="(showLogin && !isLogged)" class="login-pop-up" @inOutPaneAnimation>
+        <div class="top">
+            <div class="top-login" (click)="onClickLogin()">
+                <p>LOGIN</p>
+                <div [ngClass]="!showRegister ? 'selected':'no-selected'"></div>
+            </div>
+            <div class="top-register" (click)="onClickRegister()">
+                <p>REGISTRO</p>
+                <div [ngClass]="showRegister ? 'selected':'no-selected'"></div>
+            </div>
+        </div>
+        <div class="form-container" *ngIf="!showRegister">
+            <form class="login-form" #f="ngForm" (ngSubmit)="onLogin()">
+                <label for="username" >Usuario:</label>
+                <input type="text"  name="username" id="username" [(ngModel)]="username">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" [(ngModel)]="password">
+                <button type="submit">
+                    Iniciar Sesion
+                    <ngx-spinner [name]="'login-spinner'" [fullScreen]="false" type="ball-spin-clockwise" size="medium"></ngx-spinner>
+                </button>
+            </form>
+            <div class="error" *ngIf="errorLogin">
+                <p>*{{errorMsj}}</p>
+            </div>
+        </div>
+        <div class="form-container" *ngIf="showRegister" >
+            <form class="login-form" #f="ngForm" (ngSubmit)="onRegister()" ngNativeValidate>
+                <label for="username" >Usuario:</label>
+                <input type="text" name="username" id="username" [(ngModel)]="username" required>
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" [(ngModel)]="email" required>
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" [(ngModel)]="password" required>
+                <button type="submit">
+                    Registrarse
+                </button>
+                <ngx-spinner [name]="'register-spinner'" [fullScreen]="false" type="ball-spin-clockwise" size="medium"></ngx-spinner>
+            </form>
+            <div class="error" *ngIf="errorRegistro">
+                <p>*{{errorRegistroMsj}}</p>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="(showLogin && isLogged)" class="login-pop-up logged-pop-up" @inOutPaneAnimation>
+        <p>Usuario: <span>{{user}}</span></p>
+        <p>Permisos: <span>{{isAdmin ? 'Administrador':'Invitado'}}</span></p>
+        <button (click)="onLogout()">Cerrar Sesion</button>
+    </div>
+    <div class="mobile-menu" *ngIf="showMobileMenu" @inOutPaneAnimationLeft>
+        <ul class="links">
+            <li >
+                <a (click)="onSelect(0)" href="#home">Inicio</a>
+                <div [ngClass]="selected === 0 ? 'selected':'hide'"></div>
+            </li>
+            <li >
+                <a  (click)="onSelect(1)" href="#about" >Sobre mi</a>
+                <div [ngClass]="selected === 1 ? 'selected':'hide'"></div>
+            </li>
+            <li >
+                <a href="#skills" (click)="onSelect(2)">Habilidades</a>
+                <div [ngClass]="selected === 2 ? 'selected':'hide'"></div>
+            </li>
+            <li >
+                <a href="#projects" (click)="onSelect(3)">Proyectos</a>
+                <div [ngClass]="selected === 3 ? 'selected':'hide'"></div>
+            </li>
+            <li>
+                <div class="ap-logo">
+                    <img src="../../../assets/Icons/APLogo-20-20.webp">
+                    <p >#YoProgramo</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

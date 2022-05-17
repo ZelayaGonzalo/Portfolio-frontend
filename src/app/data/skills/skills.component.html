@@ -1,0 +1,120 @@
+<section class="skills">
+    <button class="edit-button" *ngIf="isAdmin" (click)="openSkillWindow()">
+        <fa-icon [icon]="faPlus" ></fa-icon>
+    </button>
+    <h1 class="title">
+        HABILIDADES
+    </h1>
+    <div class="explanation">
+        <div class="circle-explanation">
+            <div role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="--value:100">
+                <div class="center"></div>
+            </div>
+            <p> Me siento comodo usando esta tecnologia</p>
+        </div>
+        <div class="circle-explanation">
+            <div role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="--value:50">
+                <div class="center"></div>
+            </div>
+            <p> Conozco los conceptos basicos y la he usado en algunos proyectos</p>
+        </div>
+        <div class="circle-explanation">
+            <div role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="--value:20">
+                <div class="center"></div>
+            </div>
+            <p>Aun estoy aprendiendo los conceptos basicos</p>
+        </div>
+    </div>
+    <div *ngIf="languages.length > 0" class="skills-container">
+        <h2 class="sub-title"> LENGUAJES </h2>
+        <ul class="skills-list">
+            <li *ngFor="let skill of languages">
+                <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" [style]="'--value:'+skill.level">
+                    <div *ngIf="isAdmin" class="edit-skill" (click)="openEditWindow(skill)">
+                        <fa-icon [icon]="faPen"></fa-icon>
+                    </div>
+                    <img [src]="skill.icon" alt="">
+                </div>
+                <p>{{skill.name}}</p>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="frameworks.length > 0" class="skills-container">
+        <h2 class="sub-title"> FRAMEWORKS </h2>
+        <ul class="skills-list">
+            <li *ngFor="let skill of frameworks">
+                <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" [style]="'--value:'+skill.level">
+                    <div *ngIf="isAdmin" class="edit-skill" (click)="openEditWindow(skill)">
+                        <fa-icon [icon]="faPen"></fa-icon>
+                    </div>
+                    <img [src]="skill.icon" alt="">
+                </div>
+                <p>{{skill.name}}</p>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="misc.length > 0" class="skills-container">
+        <h2 class="sub-title"> OTROS </h2>
+        <ul class="skills-list">
+            <li *ngFor="let skill of misc">
+                <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" [style]="'--value:'+skill.level">
+                    <div *ngIf="isAdmin" class="edit-skill" (click)="openEditWindow(skill)">
+                        <fa-icon [icon]="faPen"></fa-icon>
+                    </div>
+                    <img [src]="skill.icon" alt="">
+                </div>
+                <p>{{skill.name}}</p>
+            </li>
+        </ul>
+    </div>
+</section>
+<div class="edit-window" *ngIf="isAddingSkill" [@zoominAnimation]>
+    <div class="form-section">
+        <form  (ngSubmit)="onAddSkill()" ngNativeValidate>
+            <h3 class="title">Agregar Skill</h3>
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" [(ngModel)]="name" required>
+            <label for="icon">Icono(Link a imagen):</label>
+            <input type="text" id="icon" name="icon" [(ngModel)]="icon">
+            <label for="level">Nivel:</label>
+            <input type="number" id="level" name="level" min="0" max="100" [value]="level" [(ngModel)]="level">
+            <label for="type">Tipo:</label>
+            <select name="type" id="type" [(ngModel)]="type">
+                <option value="framework"> Framework </option>
+                <option value="language"> Lenguaje </option>
+                <option value="other"> Otro </option>
+            </select>
+            <div class="buttons">
+                <button type="submit" class="circle-button"><fa-icon [icon]="faPlus" title="Agregar"></fa-icon></button>
+                <button type="reset" class="circle-button cancel" (click)="closeSkillWindow()" title="Cancelar"><fa-icon [icon]="faXmark"></fa-icon></button>
+            </div>
+        </form>
+        <ngx-spinner name="skill-spinner" type="ball-spin-clockwise" [fullScreen]="false" bdColor="#1C1B1F"></ngx-spinner>
+    </div>
+</div>
+
+<div class="edit-window" *ngIf="isEditingSkill" [@zoominAnimation]>
+    <div class="form-section" ngNativeValidate>
+        <form  (ngSubmit)="onEditSkill()">
+            <h3 class="title">Editar Skill</h3>
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" [(ngModel)]="name" required>
+            <label for="icon">Icono(Link a imagen):</label>
+            <input type="text" id="icon" name="icon" [(ngModel)]="icon">
+            <label for="level">Nivel:</label>
+            <input type="number" id="level" name="level" min="0" max="100" [value]="level" [(ngModel)]="level">
+            <label for="type">Tipo:</label>
+            <select name="type" id="type" [(ngModel)]="type">
+                <option value="framework"> Framework </option>
+                <option value="language"> Lenguaje </option>
+                <option value="other"> Otro </option>
+            </select>
+            <div class="buttons">
+                <button type="submit" class="circle-button"><fa-icon [icon]="faFloppyDisk" title="Agregar"></fa-icon></button>
+                <button type="button" class="circle-button cancel" (click)="onDeleteSkill()"><fa-icon [icon]="faTrash" title="Borrar"></fa-icon></button>
+                <button type="button" class="circle-button cancel" (click)="closeEditWindow()" title="Cancelar"><fa-icon [icon]="faXmark"></fa-icon></button>
+            </div>
+            <ngx-spinner name="skill-spinner" type="ball-spin-clockwise" [fullScreen]="false" bdColor="#1C1B1F"></ngx-spinner>
+        </form>
+    </div>
+</div>

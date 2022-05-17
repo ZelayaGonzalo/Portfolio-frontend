@@ -1,0 +1,84 @@
+$black-background:#1C1B1F;
+$main:#EE6C4D;
+.title{
+    text-align: center;
+}
+.skills-list{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    min-height: 50%;
+    .skill{
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        transition: 0.3s;
+        .skill-circle{
+            border: solid 3px $main;
+            background-color: transparent;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            img{
+                width: 50%;
+                height: auto;
+            }
+        }
+        .skill-name{
+            text-align: center;
+        }
+        &:hover{
+            .skill-circle{
+                background-color: $main;
+            }
+        }
+    }
+    .selected{
+        .skill-circle{
+            background-color: $main;
+            border-color: white;
+        }
+    }
+}
+.buttons{
+    display: flex;
+    justify-content: center;
+    .edit-button{
+        position: relative;
+        margin: 10px;
+        top: 0;
+        right: 0;
+    }
+}
+.edit-button{
+    top: 2%;
+    left: 2%;
+}
+
+@media (max-width:1024px){
+}
+
+
+@media (max-width:600px){
+    .title{
+        font-size: 14px;
+    }
+    .skills-list{
+        font-size: 13px;
+        .skill{
+            margin: 5px;
+            .skill-circle{
+                width: 50px;
+                height: 50px;
+            }
+        }
+    }
+    
+}

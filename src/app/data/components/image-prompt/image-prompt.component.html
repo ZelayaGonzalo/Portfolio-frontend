@@ -1,0 +1,25 @@
+<div class="image-prompt">
+    <div class="content" *ngIf="closeWindow">
+        <h3 class="title">Agregar Imagen</h3>
+        <form>
+            <label for="url"> URL: 
+                <input type="text" name="url" id="url" [(ngModel)]="url">
+                <button class="load-image-button" (click)="onPreview()"> <fa-icon [icon]="faRotateRight"></fa-icon> </button>
+            </label>
+            <label for="format" *ngIf="!isBanner" >
+                Formato: 
+                <select [(ngModel)]="format" [value]="format" name="format">
+                    <option value="mobile">Mobile</option>
+                    <option value="desktop">Desktop</option>
+                </select>
+            </label>
+        </form>
+        <div class="preview">
+            <img [src]="previewImage" alt="No se pudo cargar imagen" >
+        </div>
+        <div class="buttons">
+            <button class="edit-button" (click)="onSave()"><fa-icon [icon]="faCheck" ></fa-icon></button>
+            <button class="edit-button cancel" (click)="onCancel()"><fa-icon [icon]="faXMark"></fa-icon></button>
+        </div>
+    </div>
+</div>

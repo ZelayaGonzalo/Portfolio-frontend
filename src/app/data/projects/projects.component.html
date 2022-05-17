@@ -1,0 +1,96 @@
+<section class="projects-section">
+  <h1 class="title">PROYECTOS</h1>
+  <button class="edit-button" *ngIf="isAdmin" (click)="openAddProject()">
+    <fa-icon [icon]="faPlus"></fa-icon>
+  </button>
+  <ul class="projects">
+    <app-project
+      [project]="item"
+      [index]="i"
+      *ngFor="let item of projects; let i = index"
+      (reloadData)="onReloadData($event)"
+      (editProject)="onEditProject($event)"
+    ></app-project>
+  </ul>
+</section>
+
+<div class="project-popup" *ngIf="isAddingProject" [@zoominAnimation]>
+  <div class="popup-section">
+    <button class="edit-button cancel" (click)="closeAddProject()">
+      <fa-icon [icon]="faXmark"></fa-icon>
+    </button>
+    <h2 class="title">Agregar Proyecto</h2>
+    <form class="form" (ngSubmit)="onSaveProject()">
+      <label class="label-title" for="title"
+        >Titulo:<input type="text" name="title" id="title" [(ngModel)]="title"
+      /></label>
+      <label for="description">Descripcion:</label>
+      <textarea
+        name="description"
+        id="description"
+        [(ngModel)]="description"
+      ></textarea>
+      <div class="links">
+        <label for="demo"
+          >Demo:<input type="text" name="demo" id="demo" [(ngModel)]="demo"
+        /></label>
+        <label for="repo"
+          >Repositorio:<input
+            type="text"
+            name="repo"
+            id="repo"
+            [(ngModel)]="repo"
+        /></label>
+      </div>
+      <div class="buttons">
+        <button class="edit-button" type="button" (click)="openImagesEditor()">
+          <fa-icon [icon]="faImage"></fa-icon
+          ><fa-icon [icon]="faCirclePlus" class="mini"></fa-icon>
+        </button>
+        <button class="edit-button" type="button" (click)="openSelectSkills()">
+          <fa-icon [icon]="faCubes"></fa-icon
+          ><fa-icon [icon]="faCirclePlus" class="mini"></fa-icon>
+        </button>
+        <button class="edit-button" type="submit">
+          <fa-icon [icon]="faFloppyDisk"></fa-icon>
+        </button>
+      </div>
+    </form>
+    <div class="show-selected">
+      <ul class="show-skills">
+        <li *ngFor="let skill of skills"><img [src]="skill.icon" /></li>
+      </ul>
+      <ul class="show-images">
+        <li *ngFor="let image of images">
+          <img [src]="image.url" [alt]="image.format" />
+        </li>
+      </ul>
+    </div>
+    <ngx-spinner name="projects-spinner" type="ball-spin-clockwise" [fullScreen]="false" bdColor="#1C1B1F"></ngx-spinner>
+  </div>
+</div>
+
+<div
+  class="project-popup skill-selector"
+  *ngIf="isAddingProject && isAddingSkill"
+  [@inOutPaneAnimation]
+>
+  <app-skills-selector
+    class="popup-section"
+    (goBack)="closeSelectSkills($event)"
+    (sendSelected)="receiveSkills($event)"
+    [alreadySelected]="skills"
+  ></app-skills-selector>
+</div>
+<div
+  class="project-popup skill-selector"
+  *ngIf="isAddingProject && isAddingImages"
+  [@inOutPaneAnimation]
+>
+  <app-images-selector
+    class="popup-section"
+    (goBack)="closeImagesEditor($event)"
+    (sendSelected)="receiveImages($event)"
+    [alreadySelected]="images"
+  ></app-images-selector>
+</div>
