@@ -1,0 +1,50 @@
+<section class="education">
+    <h1 class="title">EDUCACIÓN</h1>
+    <button class="edit-button" (click)="openEditWindow()"><fa-icon [icon]="faPlus"></fa-icon></button>
+    <ul class="history">
+        <li id="start-li">
+            <span class="border-circle start"></span>
+        </li>
+        <li *ngFor="let item of history">
+            <span class="border-circle">
+                <button class="edit" *ngIf="isAdmin" (click)="onStartEditing(item)">
+                    <fa-icon [icon]="faPen"></fa-icon>
+                </button>
+            </span>
+            <div class="info">
+                <h3 class="institution">{{item.institution}}</h3>
+                <p class="degree" *ngIf="item.degree">{{item.degree}}</p>
+                <p class="years">{{item.startYear}} - 
+                    <span *ngIf="item.endYear <= currentYear">{{item.endYear}}</span>
+                    <span *ngIf="item.endYear > currentYear">Presente</span>
+                </p>
+            </div>
+        </li>
+        <li id="start-li">
+            <span class="border-circle start"></span>
+        </li>
+    </ul>
+</section>
+
+<div class="edit-window" *ngIf="isEditing" [@zoominAnimation]>
+    <div class="form-section">
+        <form class="form" (ngSubmit)="onAdd()" ngNativeValidate>
+            <h3 class="title">Agregar Estudios</h3>
+            <label for="institution">Institución</label>
+            <input type="text" name="institution" id="institution" [(ngModel)]="institution" placeholder="Nombre de la institución" required>
+            <label for="degree">Título</label>
+            <input type="text" name="degree" id="degree" [(ngModel)]="degree" placeholder="Título vinculado">
+            <label for="startYear">Año de ingreso</label>
+            <input type="number" min="1990" max="2050" name="startYear" id="startYear" [(ngModel)]="startYear">
+            <label for="endYear" [ngClass]="finished ? 'blocked':''">Año de Egreso</label>
+            <input [ngClass]="finished ? 'blocked':''" [readonly]="finished" type="number"  min="1990" max="2050" name="endYear" id="endYear" [(ngModel)]="endYear">
+            <label>Aun no he egresado: <input type="checkbox" name="finished?" id="finished?" [(ngModel)]="finished"></label>
+            <div class="buttons">
+                <button class="edit-button" type="submit"><fa-icon [icon]="!currentID ? faPlus: faFloppyDisk"></fa-icon></button>
+                <button *ngIf="currentID" class="edit-button cancel" type="button" (click)="onDelete()"><fa-icon [icon]="faTrash"></fa-icon></button>
+                <button class="edit-button cancel" type="button" (click)="closeEditWindow()"><fa-icon [icon]="faXmark"></fa-icon></button>
+            </div>
+        </form>
+        <ngx-spinner name="education-spinner" type="ball-spin-clockwise" [fullScreen]="false" bdColor="#1C1B1F"></ngx-spinner>
+    </div>
+</div>

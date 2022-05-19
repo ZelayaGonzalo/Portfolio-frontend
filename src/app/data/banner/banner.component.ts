@@ -77,7 +77,7 @@ export class BannerComponent implements OnInit {
     this.dataService.data().subscribe(
       {
         next:data=>{
-          let newData = new Data(this.name,data.lastName,data.photo,data.description,data.role,this.banner,[],[])
+          let newData = new Data(this.name,data.lastName,data.photo,data.description,data.role,this.banner,[],[],[])
            this.dataService.editData(newData).subscribe({
              next: data=>{
              this.update()

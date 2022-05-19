@@ -94,8 +94,8 @@
 </div>
 
 <div class="edit-window" *ngIf="isEditingSkill" [@zoominAnimation]>
-    <div class="form-section" ngNativeValidate>
-        <form  (ngSubmit)="onEditSkill()">
+    <div class="form-section">
+        <form  (ngSubmit)="onEditSkill()" ngNativeValidate>
             <h3 class="title">Editar Skill</h3>
             <label for="name">Nombre:</label>
             <input type="text" id="name" name="name" [(ngModel)]="name" required>

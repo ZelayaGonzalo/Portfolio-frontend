@@ -79,7 +79,7 @@ export class AboutComponent implements OnInit {
     this.dataService.data().subscribe(
       {
         next:data=>{
-          let newData = new Data(this.name,this.lastName,this.photo,this.description,this.role,data.banner,[],[])
+          let newData = new Data(this.name,this.lastName,this.photo,this.description,this.role,data.banner,[],[],[])
            this.dataService.editData(newData).subscribe({
              next: data=>{
              this.updated.emit(true)

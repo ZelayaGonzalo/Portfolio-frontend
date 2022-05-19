@@ -10,7 +10,7 @@ import { NuevoUsuario } from '../models/nuevo-usuario';
 })
 export class AuthService {
 
-  authURL = 'https://shielded-temple-99138.herokuapp.com/auth/'
+  authURL = 'http://localhost:8080/auth/'
 
   constructor(private httpClient : HttpClient) { }
 
