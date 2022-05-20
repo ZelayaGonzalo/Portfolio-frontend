@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { faFloppyDisk, faPen, faPlus, faTrash, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Education } from 'src/app/models/education';
 import { DataService } from 'src/app/service/data.service';
@@ -14,7 +14,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
     zoomInAnimation
   ]
 })
-export class StudiesComponent implements OnInit {
+export class StudiesComponent implements OnInit,OnChanges {
 
   faPen = faPen
   faPlus = faPlus
@@ -51,6 +51,11 @@ export class StudiesComponent implements OnInit {
       (a,b)=>a.startYear - b.startYear
     )
     
+  }
+  ngOnChanges():void{
+    this.history.sort(
+      (a,b)=>a.startYear - b.startYear
+    )
   }
 
 

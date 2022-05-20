@@ -12,7 +12,7 @@ import { Education } from '../models/education';
 })
 export class DataService {
 
-  dataURL = 'http://localhost:8080'
+  dataURL = 'https://shielded-temple-99138.herokuapp.com'
 
   constructor(private httpClient: HttpClient) { }
 

@@ -1,6 +1,6 @@
 <section class="education">
     <h1 class="title">EDUCACIÓN</h1>
-    <button class="edit-button" (click)="openEditWindow()"><fa-icon [icon]="faPlus"></fa-icon></button>
+    <button *ngIf="isAdmin" class="edit-button" (click)="openEditWindow()"><fa-icon [icon]="faPlus"></fa-icon></button>
     <ul class="history">
         <li id="start-li">
             <span class="border-circle start"></span>
