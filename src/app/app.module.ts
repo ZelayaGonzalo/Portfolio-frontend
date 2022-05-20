@@ -26,6 +26,7 @@ import { SkillsSelectorComponent } from './data/projects/skills-selector/skills-
 import { ImagesSelectorComponent } from './data/projects/images-selector/images-selector.component';
 import { ImagePromptComponent } from './data/components/image-prompt/image-prompt.component';
 import { FooterComponent } from './footer/footer.component';
+import { StudiesComponent } from './data/studies/studies.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { FooterComponent } from './footer/footer.component';
     SkillsSelectorComponent,
     ImagesSelectorComponent,
     ImagePromptComponent,
-    FooterComponent
+    FooterComponent,
+    StudiesComponent
     ],
   imports: [
     BrowserModule,

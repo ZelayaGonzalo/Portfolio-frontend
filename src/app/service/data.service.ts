@@ -4,6 +4,7 @@ import { Data } from '../models/data';
 import { HttpClient } from '@angular/common/http';
 import { Skill } from '../models/skill';
 import { Project } from '../models/project';
+import { Education } from '../models/education';
 
 
 @Injectable({
@@ -11,7 +12,7 @@ import { Project } from '../models/project';
 })
 export class DataService {
 
-  dataURL = 'https://shielded-temple-99138.herokuapp.com'
+  dataURL = 'http://localhost:8080'
 
   constructor(private httpClient: HttpClient) { }
 
@@ -47,6 +48,16 @@ export class DataService {
   }
   public deleteProject(id:number):Observable<any>{
     return this.httpClient.delete(`${this.dataURL}/projects/delete?id=${id}`)
+  }
+
+  public addEducation(education:Education){
+    return this.httpClient.post(`${this.dataURL}/education/add`,education)
+  }
+  public editEducation(education:Education):Observable<any>{
+    return this.httpClient.put(`${this.dataURL}/education/edit`,education)
+  }
+  public deleteEducation(id:number):Observable<any>{
+    return this.httpClient.delete(`${this.dataURL}/education/delete?id=${id}`)
   }
 
 }

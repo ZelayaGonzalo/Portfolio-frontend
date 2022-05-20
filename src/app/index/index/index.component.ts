@@ -24,6 +24,7 @@ export class IndexComponent implements OnInit {
     this.dataService.data().subscribe(
       {next: data=>{
         this.data = data
+        console.log(data)
         this.spinner.hide('main-spinner')
       },
       error:err=>{
