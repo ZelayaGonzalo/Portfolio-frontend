@@ -9,7 +9,7 @@ export class ThemeService {
   private theme: BehaviorSubject<string>
   constructor(
   ) {
-    this.theme = new BehaviorSubject<string>("light")
+    this.theme = new BehaviorSubject<string>("night")
    }
 
    setPrimaryColor(color:string):void{

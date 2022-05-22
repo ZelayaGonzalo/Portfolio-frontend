@@ -105,7 +105,8 @@
             </li>
             <li>
                 <div class="ap-logo">
-                    <img src="../../../assets/Icons/APLogo-20-20.webp">
+                    <img *ngIf="currentTheme === 'night'" src="../../../assets/Icons/APLogo-20-20.webp">
+                    <img *ngIf="currentTheme === 'light'" src="../../../assets/Icons/APLogo-20-20-Light.webp">
                     <p >#YoProgramo</p>
                 </div>
             </li>

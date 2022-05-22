@@ -16,14 +16,14 @@ export class AuthService {
   constructor(private httpClient : HttpClient) { }
 
   public new(nuevoUsuario: NuevoUsuario):Observable<any>{
-    return this.httpClient.post<any>(this.authURL+'new',nuevoUsuario)
+    return this.httpClient.post<any>(this.authURL+'/new',nuevoUsuario)
   }
 
   public login(loginUsuario: LoginUsuario) : Observable<JwtDTO>{
-    return this.httpClient.post<JwtDTO>(this.authURL+'login',loginUsuario)
+    return this.httpClient.post<JwtDTO>(this.authURL+'/login',loginUsuario)
   }
 
   public refresh(dto:JwtDTO) : Observable<JwtDTO>{
-    return this.httpClient.post<JwtDTO>(this.authURL+'refresh',dto)
+    return this.httpClient.post<JwtDTO>(this.authURL+'/refresh',dto)
   }
 }
