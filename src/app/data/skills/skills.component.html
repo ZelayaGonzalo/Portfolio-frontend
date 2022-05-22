@@ -1,4 +1,4 @@
-<section class="skills">
+<section class="skills" [ngClass]="currentTheme">
     <button class="edit-button" *ngIf="isAdmin" (click)="openSkillWindow()">
         <fa-icon [icon]="faPlus" ></fa-icon>
     </button>
@@ -68,7 +68,7 @@
         </ul>
     </div>
 </section>
-<div class="edit-window" *ngIf="isAddingSkill" [@zoominAnimation]>
+<div class="edit-window" [ngClass]="currentTheme" *ngIf="isAddingSkill" [@zoominAnimation] >
     <div class="form-section">
         <form  (ngSubmit)="onAddSkill()" ngNativeValidate>
             <h3 class="title">Agregar Skill</h3>
@@ -85,15 +85,14 @@
                 <option value="other"> Otro </option>
             </select>
             <div class="buttons">
-                <button type="submit" class="circle-button"><fa-icon [icon]="faPlus" title="Agregar"></fa-icon></button>
+                <button type="submit" class="circle-button save-button"><fa-icon [icon]="faPlus" title="Agregar"></fa-icon></button>
                 <button type="reset" class="circle-button cancel" (click)="closeSkillWindow()" title="Cancelar"><fa-icon [icon]="faXmark"></fa-icon></button>
             </div>
         </form>
-        <ngx-spinner name="skill-spinner" type="ball-spin-clockwise" [fullScreen]="false" bdColor="#1C1B1F"></ngx-spinner>
+        <ngx-spinner name="skill-spinner" type="ball-spin-clockwise" [fullScreen]="false" [color]="currentTheme ==='light'?'#2D3142':'white'" [bdColor]="currentTheme ==='light'?'#FBFBFF':'#1C1B1F'"></ngx-spinner>
     </div>
 </div>
-
-<div class="edit-window" *ngIf="isEditingSkill" [@zoominAnimation]>
+<div class="edit-window" [ngClass]="currentTheme" *ngIf="isEditingSkill" [@zoominAnimation]>
     <div class="form-section">
         <form  (ngSubmit)="onEditSkill()" ngNativeValidate>
             <h3 class="title">Editar Skill</h3>
@@ -114,7 +113,7 @@
                 <button type="button" class="circle-button cancel" (click)="onDeleteSkill()"><fa-icon [icon]="faTrash" title="Borrar"></fa-icon></button>
                 <button type="button" class="circle-button cancel" (click)="closeEditWindow()" title="Cancelar"><fa-icon [icon]="faXmark"></fa-icon></button>
             </div>
-            <ngx-spinner name="skill-spinner" type="ball-spin-clockwise" [fullScreen]="false" bdColor="#1C1B1F"></ngx-spinner>
+            <ngx-spinner name="skill-spinner" type="ball-spin-clockwise" [fullScreen]="false" [color]="currentTheme ==='light'?'#2D3142':'white'" [bdColor]="currentTheme ==='light'?'#FBFBFF':'#1C1B1F'"></ngx-spinner>
         </form>
     </div>
 </div>

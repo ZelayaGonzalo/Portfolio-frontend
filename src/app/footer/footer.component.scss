@@ -2,7 +2,6 @@ $black-background:#1C1B1F;
 $main:#EE6C4D;
 $text:white;
 .footer{
-
     color: $text;
     width: 100%;
     min-height: 200px;
@@ -11,9 +10,6 @@ $text:white;
     border-top: 3px solid $main;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 1px -8px 11px 0px rgba(0,0,0,0.79);
-    -webkit-box-shadow: 1px -8px 11px 0px rgba(0,0,0,0.79);
-    -moz-box-shadow: 1px -8px 11px 0px rgba(0,0,0,0.79);
     .contacto{
         font-weight: bold;
         flex: 1;
@@ -51,6 +47,15 @@ $text:white;
     }
 }
 
+.light{
+    $background:#FBFBFF;
+    $main:#2589BD;
+    $text:#2D3142;
+    color: $text;
+    border-color: $main;
+    background-color: $background;
+
+}
 
 @media (max-width:600px){
     .footer{

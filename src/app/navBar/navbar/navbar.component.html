@@ -1,6 +1,7 @@
-<div class="nav-container">
+<div class="nav-container" [ngClass]="currentTheme">
     <div class="logo item">
-       <img src="../../../assets/Icons/APLogo-20-20.webp">
+       <img *ngIf="currentTheme === 'night'" src="../../../assets/Icons/APLogo-20-20.webp">
+       <img *ngIf="currentTheme === 'light'" src="../../../assets/Icons/APLogo-20-20-Light.webp">
        <p >#YoProgramo</p>
     </div>
     <ul class="links item">
@@ -22,7 +23,8 @@
         </li>
     </ul>
     <button class="mobile-hamburguer item" (click)="toogleMobileMenu()">
-        <img src="../../../assets/Icons/APOnlyLogo.png">
+        <img *ngIf="currentTheme === 'night'" src="../../../assets/Icons/APOnlyLogo.png">
+        <img *ngIf="currentTheme === 'light'" src="../../../assets/Icons/APOnlyLogoLight.png">
     </button>
     <div class="login item" (click)="onShowLogin()" *ngIf="!isLogged">
         <button>Iniciar Sesion</button>
@@ -77,6 +79,10 @@
     <div *ngIf="(showLogin && isLogged)" class="login-pop-up logged-pop-up" @inOutPaneAnimation>
         <p>Usuario: <span>{{user}}</span></p>
         <p>Permisos: <span>{{isAdmin ? 'Administrador':'Invitado'}}</span></p>
+        <div class="theme-selection">
+                <div class="theme" [ngClass]="currentTheme === 'night'? 'selected':''" (click)="theme.setNightTheme()"></div>
+                <div class="theme select-light" [ngClass]="currentTheme === 'light'? 'selected':''" (click)="theme.setLigthTheme()"></div>
+        </div>
         <button (click)="onLogout()">Cerrar Sesion</button>
     </div>
     <div class="mobile-menu" *ngIf="showMobileMenu" @inOutPaneAnimationLeft>

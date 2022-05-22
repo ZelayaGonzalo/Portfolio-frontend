@@ -8,6 +8,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 
 import { Images } from 'src/app/models/project-image';
 import { zoomInAnimation } from 'src/app/models/animations';
+import { ThemeService } from 'src/app/service/theme.service';
 
 @Component({
   selector: 'app-banner',
@@ -29,6 +30,7 @@ export class BannerComponent implements OnInit {
   
 
   isAdmin = false
+  currentTheme='night'
 
   @Input() banner:string='some banner'
   @Input() name:string ='asdasd'
@@ -42,7 +44,8 @@ export class BannerComponent implements OnInit {
   constructor(
     private dataService:DataService,
     private tokenService:TokenService,
-    private spinner:NgxSpinnerService
+    private spinner:NgxSpinnerService,
+    private theme:ThemeService
   ) { }
 
 
@@ -54,6 +57,8 @@ export class BannerComponent implements OnInit {
     this.backupBanner = this.banner
     this.backupName = this.name
     this.backupRole = this.role
+    this.theme.getTheme().subscribe(theme=>{
+      this.currentTheme = theme})
   }
 
   onStartEdition():void{

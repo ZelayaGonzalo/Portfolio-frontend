@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { LoginUsuario } from 'src/app/models/login-usuario';
 import { NuevoUsuario } from 'src/app/models/nuevo-usuario';
 import { style,trigger,animate,state, transition } from '@angular/animations';
@@ -10,6 +10,7 @@ import { TokenService } from 'src/app/service/token.service';
 import { Theme } from 'src/app/models/theme';
 
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ThemeService } from 'src/app/service/theme.service';
 
 @Component({
   selector: 'app-navbar',
@@ -47,6 +48,8 @@ export class NavbarComponent implements OnInit {
   showLogin = false
   showRegister = false
   showMobileMenu = false
+
+  currentTheme:string = 'night'
   
   //Auth
   errorLogin = false
@@ -66,7 +69,9 @@ export class NavbarComponent implements OnInit {
   constructor(
     private tokenService:TokenService,
     private authService:AuthService,
-    private spinner:NgxSpinnerService
+    private spinner:NgxSpinnerService,
+    public theme:ThemeService,
+    private renderer:Renderer2,
   ) { }
 
   ngOnInit(): void { 
@@ -75,7 +80,12 @@ export class NavbarComponent implements OnInit {
     if(this.isLogged){
       this.user = this.tokenService.getUserName()
     }
-    
+    this.theme.getTheme().subscribe(theme=>{
+      this.currentTheme = theme
+      this.renderer.removeClass(document.body,'night')
+      this.renderer.removeClass(document.body,'light')
+      this.renderer.addClass(document.body, this.currentTheme);
+    })
   }
 
   toogleMobileMenu():void{

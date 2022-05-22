@@ -5,6 +5,7 @@ import { DataService } from 'src/app/service/data.service';
 import { TokenService } from 'src/app/service/token.service';
 import { zoomInAnimation } from 'src/app/models/animations';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ThemeService } from 'src/app/service/theme.service';
 
 @Component({
   selector: 'app-studies',
@@ -28,6 +29,7 @@ export class StudiesComponent implements OnInit,OnChanges {
 
   isAdmin = false
   isEditing = false
+  currentTheme:string = 'night'
 
   currentID:number | undefined = undefined
   institution:string = ''
@@ -41,7 +43,8 @@ export class StudiesComponent implements OnInit,OnChanges {
   constructor(
     private tokenService:TokenService,
     private dataService:DataService,
-    private spinner:NgxSpinnerService
+    private spinner:NgxSpinnerService,
+    private theme:ThemeService
   ) { }
 
   ngOnInit(): void {
@@ -50,7 +53,8 @@ export class StudiesComponent implements OnInit,OnChanges {
     this.history.sort(
       (a,b)=>a.startYear - b.startYear
     )
-    
+    this.theme.getTheme().subscribe(theme=>{
+      this.currentTheme = theme})
   }
   ngOnChanges():void{
     this.history.sort(

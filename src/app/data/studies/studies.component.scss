@@ -1,5 +1,6 @@
 $black-background:#1C1B1F;
 $main:#EE6C4D;
+$cancel:#F15152;
 .education{
     position: relative;
     color: white;
@@ -12,6 +13,7 @@ $main:#EE6C4D;
             padding: 20px 0;
             display: flex;
             align-items: center;
+            border-left: 4px solid $main;
             .info{
                 .institution{
                     text-transform: uppercase;
@@ -54,7 +56,6 @@ $main:#EE6C4D;
                 }
             }
            
-            border-left: 4px solid $main;
         }
         #start-li{
             padding: 0; 
@@ -70,6 +71,7 @@ $main:#EE6C4D;
         top: 0;
     }
 }
+
 
 .edit-window{
     position: fixed;
@@ -124,7 +126,53 @@ $main:#EE6C4D;
       }
     }
 }
+.light{
+  $background:#FBFBFF;
+  $main:#2589BD;
+  $text:#2D3142;
+  color: $text;
+  .title{
+    color: $main;
+  }
+  .history li {
+    border-color: $main;
+    .info .degree{
+      color: #484952;
+    }
+    .border-circle{
+      background-color: $main;
+      .edit{
+        background-color: $main;
+        color: $background;
+        &:hover{
+          background-color:$background;
+          color: $main;
+          border-color: $main;
+        }
+      }
+    }
+  }
+  .form-section {
+    background-color: $background;
+    form{
+      input{
+        background-color: $background;
+        color: $text;
+        border-color: $text;
+      }
+  }
+}
 
+  .edit-button{
+    border-color: $main;
+    color: $background;
+    background-color: $main;
+  }
+  .cancel{
+    background-color: $cancel;
+    border-color: $cancel;
+  }
+}
 @media (max-width:600px){
     .edit-window{
       font-size: 14px;

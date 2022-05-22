@@ -1,4 +1,4 @@
-<section class="education">
+<section class="education" [ngClass]="currentTheme">
     <h1 class="title">EDUCACIÓN</h1>
     <button *ngIf="isAdmin" class="edit-button" (click)="openEditWindow()"><fa-icon [icon]="faPlus"></fa-icon></button>
     <ul class="history">
@@ -26,7 +26,7 @@
     </ul>
 </section>
 
-<div class="edit-window" *ngIf="isEditing" [@zoominAnimation]>
+<div class="edit-window" [ngClass]="currentTheme" *ngIf="isEditing" [@zoominAnimation]>
     <div class="form-section">
         <form class="form" (ngSubmit)="onAdd()" ngNativeValidate>
             <h3 class="title">Agregar Estudios</h3>
@@ -40,11 +40,11 @@
             <input [ngClass]="finished ? 'blocked':''" [readonly]="finished" type="number"  min="1990" max="2050" name="endYear" id="endYear" [(ngModel)]="endYear">
             <label>Aun no he egresado: <input type="checkbox" name="finished?" id="finished?" [(ngModel)]="finished"></label>
             <div class="buttons">
-                <button class="edit-button" type="submit"><fa-icon [icon]="!currentID ? faPlus: faFloppyDisk"></fa-icon></button>
+                <button class="edit-button save-button" type="submit"><fa-icon [icon]="!currentID ? faPlus: faFloppyDisk"></fa-icon></button>
                 <button *ngIf="currentID" class="edit-button cancel" type="button" (click)="onDelete()"><fa-icon [icon]="faTrash"></fa-icon></button>
                 <button class="edit-button cancel" type="button" (click)="closeEditWindow()"><fa-icon [icon]="faXmark"></fa-icon></button>
             </div>
         </form>
-        <ngx-spinner name="education-spinner" type="ball-spin-clockwise" [fullScreen]="false" bdColor="#1C1B1F"></ngx-spinner>
+        <ngx-spinner name="education-spinner" type="ball-spin-clockwise" [fullScreen]="false" [color]="currentTheme ==='light'?'#2D3142':'white'" [bdColor]="currentTheme ==='light'?'#FBFBFF':'#1C1B1F'"></ngx-spinner>
     </div>
 </div>

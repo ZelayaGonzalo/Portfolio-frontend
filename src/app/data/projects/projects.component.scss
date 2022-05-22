@@ -1,6 +1,8 @@
 $black-background: #1c1b1f;
 $main: #ee6c4d;
 $text: white;
+$cancel:#F15152;
+$save:#039487;
 
 .projects-section {
   width: 90vw;
@@ -73,11 +75,9 @@ $text: white;
         margin-top: 10px;
         display: flex;
       }
-      .edit-button {
+      .circle-button {
         position: relative;
         margin: 5px;
-        top: 0;
-        right: 0;
         .mini {
           position: absolute;
           font-size: 15px;
@@ -120,11 +120,66 @@ $text: white;
     }
   }
 }
-
 .skill-selector {
   z-index: 3;
   background-color: transparent;
 }
+
+.light{
+  $background:#FBFBFF;
+  $main:#2589BD;
+  $text:#2D3142;
+  color: $text;
+  .title{
+    color: $main;
+  }
+  .edit-button{
+    border-color: $main;
+    color: $background;
+    background-color: $main;
+  }
+  .cancel{
+    background-color: $cancel;
+    border-color: $cancel;
+    color: $background;
+  }
+  .project-popup{
+    color: $text;
+  }
+  .popup-section{
+    background-color: $background;
+    .form {
+      input{
+      background-color: $background;
+      border-color: $text;
+      color: $text;
+      }
+      textarea{
+        background-color: $background;
+        border-color: $text;
+        color: $text;
+      }
+      .circle-button{
+        background-color: $main;
+        color: $background;
+        border-color: $main;
+      }
+    }  
+  }
+}
+.lightpop-up{
+  $background:#FBFBFF;
+  $main:#2589BD;
+  $text:#2D3142;
+  .popup-section{
+    background-color: $background;
+    .title{
+      color: $main;
+    }
+  }
+}
+
+
 
 @media (max-width: 1024px) {
   .projects-section {

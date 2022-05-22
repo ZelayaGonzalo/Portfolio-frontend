@@ -1,4 +1,4 @@
-<section class="projects-section">
+<section class="projects-section" [ngClass]="currentTheme">
   <h1 class="title">PROYECTOS</h1>
   <button class="edit-button" *ngIf="isAdmin" (click)="openAddProject()">
     <fa-icon [icon]="faPlus"></fa-icon>
@@ -7,6 +7,7 @@
     <app-project
       [project]="item"
       [index]="i"
+      [currentTheme]="currentTheme"
       *ngFor="let item of projects; let i = index"
       (reloadData)="onReloadData($event)"
       (editProject)="onEditProject($event)"
@@ -14,7 +15,7 @@
   </ul>
 </section>
 
-<div class="project-popup" *ngIf="isAddingProject" [@zoominAnimation]>
+<div class="project-popup" [ngClass]="currentTheme" *ngIf="isAddingProject" [@zoominAnimation]>
   <div class="popup-section">
     <button class="edit-button cancel" (click)="closeAddProject()">
       <fa-icon [icon]="faXmark"></fa-icon>
@@ -43,15 +44,15 @@
         /></label>
       </div>
       <div class="buttons">
-        <button class="edit-button" type="button" (click)="openImagesEditor()">
+        <button class="circle-button" type="button" (click)="openImagesEditor()">
           <fa-icon [icon]="faImage"></fa-icon
           ><fa-icon [icon]="faCirclePlus" class="mini"></fa-icon>
         </button>
-        <button class="edit-button" type="button" (click)="openSelectSkills()">
+        <button class="circle-button" type="button" (click)="openSelectSkills()">
           <fa-icon [icon]="faCubes"></fa-icon
           ><fa-icon [icon]="faCirclePlus" class="mini"></fa-icon>
         </button>
-        <button class="edit-button" type="submit">
+        <button class="circle-button save-button" type="submit">
           <fa-icon [icon]="faFloppyDisk"></fa-icon>
         </button>
       </div>
@@ -66,12 +67,13 @@
         </li>
       </ul>
     </div>
-    <ngx-spinner name="projects-spinner" type="ball-spin-clockwise" [fullScreen]="false" bdColor="#1C1B1F"></ngx-spinner>
+    <ngx-spinner name="projects-spinner" type="ball-spin-clockwise" [fullScreen]="false"[color]="currentTheme ==='light'?'#2D3142':'white'" [bdColor]="currentTheme ==='light'?'#FBFBFF':'#1C1B1F'"></ngx-spinner>
   </div>
 </div>
 
 <div
   class="project-popup skill-selector"
+  [ngClass]="currentTheme+'pop-up'"
   *ngIf="isAddingProject && isAddingSkill"
   [@inOutPaneAnimation]
 >
@@ -79,16 +81,18 @@
     class="popup-section"
     (goBack)="closeSelectSkills($event)"
     (sendSelected)="receiveSkills($event)"
+    [currentTheme]="currentTheme"
     [alreadySelected]="skills"
   ></app-skills-selector>
 </div>
 <div
-  class="project-popup skill-selector"
+  class="project-popup skill-selector" [ngClass]="currentTheme+'pop-up'"
   *ngIf="isAddingProject && isAddingImages"
   [@inOutPaneAnimation]
 >
   <app-images-selector
     class="popup-section"
+    [currentTheme]="currentTheme"
     (goBack)="closeImagesEditor($event)"
     (sendSelected)="receiveImages($event)"
     [alreadySelected]="images"

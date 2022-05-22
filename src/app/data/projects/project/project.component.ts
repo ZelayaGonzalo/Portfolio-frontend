@@ -23,6 +23,7 @@ export class ProjectComponent implements OnInit,OnChanges {
 
   @Input() project:Project = <Project>{}
   @Input() index:number = 0
+  @Input() currentTheme:string = 'night'
   @Output() reloadData = new EventEmitter<boolean>()
   @Output() editProject = new EventEmitter<Project>()
 

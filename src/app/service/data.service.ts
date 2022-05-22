@@ -5,15 +5,14 @@ import { HttpClient } from '@angular/common/http';
 import { Skill } from '../models/skill';
 import { Project } from '../models/project';
 import { Education } from '../models/education';
-
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  dataURL = 'https://shielded-temple-99138.herokuapp.com'
-
+  dataURL = environment.API_URL
   constructor(private httpClient: HttpClient) { }
 
   public data():Observable<Data>{

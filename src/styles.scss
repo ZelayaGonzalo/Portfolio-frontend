@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 $black-background:#1C1B1F;
 $main:#EE6C4D;
+$light-background:#FBFBFF;
+$light-main:#31bbec;
+$light-text:#2D3142;
+$cancel:#F15152;
 
 *{
     padding: 0;
@@ -25,16 +29,16 @@ ul,ol,li{
     color: white;
     font-weight: bold;
 }
-body{
+.night{
     background-color: $black-background;
+}
+.light{
+    background-color: $light-background;
 }
 .max-width{
     display: block;
     width: 100%;
     max-width: 1200px;
-}
-.icon{
-    color: red;
 }
 
 .edit-button{
@@ -51,9 +55,12 @@ body{
     height: 40px;
     background-color: $main;
     border-radius: 50%;
-    border: 2px solid white;
+    border: 2px solid $main;
     color: white;
     transition: 0.3s;
+    box-shadow: 1px 11px 5px -2px rgba(0,0,0,0.49);
+    -webkit-box-shadow: 1px 11px 5px -2px rgba(0,0,0,0.49);
+    -moz-box-shadow: 1px 11px 5px -2px rgba(0,0,0,0.49);
     &:hover{
         transform: scale(1.2);
     }
@@ -71,15 +78,24 @@ body{
     border-radius: 50%;
     font-size: 20px;
     background-color: $main;
-    border: 2px solid white;
+    border: 2px solid $main;
     color: white;
     transition: 0.3s;
+    box-shadow: 1px 11px 5px -2px rgba(0,0,0,0.49);
+    -webkit-box-shadow: 1px 11px 5px -2px rgba(0,0,0,0.49);
+    -moz-box-shadow: 1px 11px 5px -2px rgba(0,0,0,0.49);
     &:hover{
         transform: scale(1.2);
     }
 }
+.save-button{
+    background-color: #039487 !important;
+    border-color: #039487 !important;
+}
 .cancel{
-    background-color: transparent;
+    background-color: $cancel !important;
+    border-color: $cancel !important;
+    color: white;
 }
 
 @media (max-width:600px){
@@ -91,6 +107,11 @@ body{
         width: 35px;
         height: 35px;
         right: 2%;
+    }
+    .circle-button{
+        font-size: 15px;
+        width: 35px;
+        height: 35px;
     }
 }
 html{

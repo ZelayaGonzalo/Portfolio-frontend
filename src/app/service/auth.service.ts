@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { JwtDTO } from '../models/jwt-dto';
 import { LoginUsuario } from '../models/login-usuario';
 import { NuevoUsuario } from '../models/nuevo-usuario';
@@ -10,7 +11,7 @@ import { NuevoUsuario } from '../models/nuevo-usuario';
 })
 export class AuthService {
 
-  authURL = 'https://shielded-temple-99138.herokuapp.com/auth/'
+  authURL = `${environment.API_URL}/auth`
 
   constructor(private httpClient : HttpClient) { }
 

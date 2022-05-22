@@ -45,12 +45,9 @@
 .buttons{
     display: flex;
     justify-content: center;
-    .edit-button{
+    .circle-button{
         position: relative;
         margin: 10px;
-        top: 0;
-        right: 0;
-      
     }
 }
 .mini{
@@ -68,6 +65,19 @@
     height: 100%;
 }
 
+.light{
+    $background:#FBFBFF;
+  $main:#2589BD;
+  $text:#2D3142;
+    .title{
+        color: $main;
+    }
+    .edit-button{
+        background-color: $main;
+        border-color: $main;
+        color: $background;
+    }
+}
 
 @media (max-width:1024px){
 

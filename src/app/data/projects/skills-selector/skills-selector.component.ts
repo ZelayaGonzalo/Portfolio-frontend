@@ -17,6 +17,7 @@ export class SkillsSelectorComponent implements OnInit {
   faArrowLeft = faArrowLeft
 
   @Input() alreadySelected:Skill[] =[]
+  @Input() currentTheme:string = 'night'
   @Output() goBack = new EventEmitter<boolean>()
   @Output() sendSelected = new EventEmitter<Skill[]>()
 

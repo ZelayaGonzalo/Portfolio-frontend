@@ -1,7 +1,7 @@
-<div class="project">
-    <ul class="project-options" *ngIf="isAdmin">
-        <li><button class="edit-button" (click)="onEditProject()" ><fa-icon [icon]="faPen"></fa-icon></button></li>
-        <li><button class="edit-button cancel" (click)="onDeleteProject()"><fa-icon [icon]="faTrash"></fa-icon></button></li>
+<div class="project" [ngClass]="currentTheme">
+    <ul class="project-options" *ngIf="isAdmin" [ngClass]="isIndexEven ? '':'options-reverse'">
+        <li><button class="circle-button" (click)="onEditProject()" ><fa-icon [icon]="faPen"></fa-icon></button></li>
+        <li><button class="circle-button cancel" (click)="onDeleteProject()"><fa-icon [icon]="faTrash"></fa-icon></button></li>
     </ul>
     <h2 class="sub-title">{{project.title}}</h2>
     <div [ngClass]="isIndexEven ? 'content':'content reverse'">

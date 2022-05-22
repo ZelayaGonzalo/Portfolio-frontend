@@ -6,6 +6,7 @@ import { TokenService } from 'src/app/service/token.service';
 import { Images } from 'src/app/models/project-image';
 import { zoomInAnimation } from 'src/app/models/animations';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ThemeService } from 'src/app/service/theme.service';
 
 @Component({
   selector: 'app-about',
@@ -26,6 +27,7 @@ export class AboutComponent implements OnInit {
   isAddingImage = false
 
   isAdmin = false
+  currentTheme = 'night'
 
   @Input() name:string = 'name'
   @Input() lastName:string = 'lastName'
@@ -44,7 +46,8 @@ export class AboutComponent implements OnInit {
   constructor(
    private dataService:DataService,
    private tokenService:TokenService,
-   private spinner:NgxSpinnerService
+   private spinner:NgxSpinnerService,
+   private theme:ThemeService
   ) { }
 
   ngOnInit(): void {
@@ -54,6 +57,8 @@ export class AboutComponent implements OnInit {
     this.backupRole = this.role
     this.backupPhoto = this.photo
     this.backupDescription = this.description
+    this.theme.getTheme().subscribe(theme=>{
+      this.currentTheme = theme})
   }
 
   onStartEdition():void{

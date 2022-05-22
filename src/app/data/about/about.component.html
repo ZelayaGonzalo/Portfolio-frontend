@@ -1,4 +1,4 @@
-<section class="about-me text-width">
+<section class="about-me text-width" [ngClass]="currentTheme">
     <h1 class="title">
         SOBRE MI
     </h1>
@@ -28,13 +28,13 @@
     <button class="edit-button" *ngIf="isAdmin && !isEditing" (click)="onStartEdition()">
         <fa-icon [icon]="faPen" ></fa-icon>
     </button>
-    <button class="edit-button" (click)="onSave()" *ngIf="isAdmin && isEditing">
+    <button class="edit-button save-button" (click)="onSave()" *ngIf="isAdmin && isEditing">
         <fa-icon [icon]="faFloppyDisk" ></fa-icon>
     </button>
     <button class="edit-button cancel" (click)="onCancel()" *ngIf="isAdmin && isEditing">
         <fa-icon [icon]="faXmark" ></fa-icon>
     </button>
-    <ngx-spinner name="about-spinner" type="ball-spin-clockwise" [fullScreen]="false" bdColor="#1C1B1F"></ngx-spinner>
+    <ngx-spinner name="about-spinner" type="ball-spin-clockwise" [fullScreen]="false" [color]="currentTheme ==='light'?'#2D3142':'white'" [bdColor]="currentTheme ==='light'?'#FBFBFF':'#1C1B1F'"></ngx-spinner>
 </section>
 
 <app-image-prompt *ngIf="isAddingImage" [isBanner]="true" (closeWindow)="closeImageWindow($event)" (selectedImage)="receivePhoto($event)" class="pop-up" [@zoominAnimation]></app-image-prompt>

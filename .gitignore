@@ -103,6 +103,8 @@ dist
 # TernJS port file
 .tern-port
 
+#Angular
+/src/environments/**
 .angular
 .angular/cache
 /.angular/cache

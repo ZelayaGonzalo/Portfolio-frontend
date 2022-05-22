@@ -5,6 +5,7 @@ import { faPen,faTrash,faFloppyDisk, faPlus, faXmark } from '@fortawesome/free-s
 import { DataService } from 'src/app/service/data.service';
 import { zoomInAnimation } from 'src/app/models/animations';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ThemeService } from 'src/app/service/theme.service';
 
 
 //TODO add validation
@@ -45,15 +46,19 @@ export class SkillsComponent implements OnInit {
   isAddingSkill = false
   isEditingSkill = false
   isAdmin = false
+  currentTheme = 'night'
 
   constructor(
     private tokenService:TokenService,
     private dataService:DataService,
-    private spinner:NgxSpinnerService
+    private spinner:NgxSpinnerService,
+    private theme:ThemeService
   ) { }
 
   ngOnInit(): void {
     this.isAdmin = this.tokenService.isAdmin()
+    this.theme.getTheme().subscribe(theme=>{
+      this.currentTheme = theme})
   }
 
   ngOnChanges():void{

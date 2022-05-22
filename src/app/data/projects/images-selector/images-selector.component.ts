@@ -23,6 +23,7 @@ export class ImagesSelectorComponent implements OnInit {
 
 
   @Input() alreadySelected:Images[] =[]
+  @Input() currentTheme:string = 'night'
   @Output() goBack = new EventEmitter<boolean>()
   @Output() sendSelected = new EventEmitter<Images[]>()
 

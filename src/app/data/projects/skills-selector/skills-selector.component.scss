@@ -26,6 +26,7 @@ $main:#EE6C4D;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
+            transition: 0.3s;
             img{
                 width: 50%;
                 height: auto;
@@ -50,16 +51,45 @@ $main:#EE6C4D;
 .buttons{
     display: flex;
     justify-content: center;
-    .edit-button{
+    .circle-button{
         position: relative;
         margin: 10px;
-        top: 0;
-        right: 0;
     }
 }
 .edit-button{
     top: 2%;
     left: 2%;
+}
+.light{
+    $background:#FBFBFF;
+    $main:#2589BD;
+    $text:#2D3142;
+    .title{
+        color:$text;
+    }
+    .skills-list .skill{
+        .skill-circle{
+            border-color: $main;
+        }
+        &:hover{
+            .skill-circle{
+                background-color: $main;
+            }
+        }
+        .skill-name{
+            color: $text;
+        }
+    }
+    .skills-list .selected{
+        .skill-circle{
+            background-color: $main;
+            border-color: $text;
+        }
+    }
+    .circle-button{
+        background-color: $main;
+        border-color: $main;
+    }
 }
 
 @media (max-width:1024px){

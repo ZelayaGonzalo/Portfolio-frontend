@@ -1,12 +1,12 @@
 $black-background:#1C1B1F;
 $main:#EE6C4D;
+$cancel:#F15152;
 .skills{
   position: relative;
     margin: 50px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: $black-background;
     color: white;
     .explanation{
       display: flex;
@@ -18,6 +18,11 @@ $main:#EE6C4D;
         display: flex;
         justify-content: center;
         margin: 10px 0;
+        div[role="progressbar"] {
+          &:hover{
+            transform: none;
+          }
+        }
         p{
           margin-left: 10px;
           width: 200px;
@@ -103,7 +108,7 @@ $main:#EE6C4D;
       }
       select{
         background-color: $black-background;
-        border: 2px solid white;
+        border: 1px solid white;
         color: white;
         border-radius: 2px;
       }
@@ -121,7 +126,52 @@ $main:#EE6C4D;
   }
 }
 
+.light{
+  $background:#FBFBFF;
+  $main:#2589BD;
+  $text:#2D3142;
+  color: $text;
+  .title{
+    color: $main;
+  }
+  .sub-title{
+    color: $text;
+  }
+  div[role="progressbar"] {
+    $pgPercentage: var(--value);
+    background: 
+    radial-gradient(closest-side, $background 80%, transparent 100%),
+    conic-gradient($main calc(($pgPercentage) * 1%), $background 0)
+    ;
+  color: $background;
+  }
 
+  .form-section{
+    background-color: $background;
+    form {
+      input,select{
+      background-color: $background;
+      color: $text;
+      border-color: $text;
+      }
+    }
+  }
+
+  .edit-button{
+    border-color: $main;
+    color: $background;
+    background-color: $main;
+  }
+  .circle-button{
+    border-color: $main;
+    color: $background;
+    background-color: $main;
+  }
+  .cancel{
+    background-color: $cancel;
+    border-color: $cancel;
+  }
+}
 //Circles
 
 @keyframes growProgressBar {
@@ -143,6 +193,13 @@ div[role="progressbar"] {
     conic-gradient($main calc(($pgPercentage) * 1%), $black-background 0)
     ;
   color: $black-background;
+  box-shadow: 10px 10px 5px -2px rgba(0,0,0,0.49);
+-webkit-box-shadow: 10px 10px 5px -2px rgba(0,0,0,0.49);
+-moz-box-shadow: 10px 10px 5px -2px rgba(0,0,0,0.49);
+transition: 0.3s;
+&:hover{
+  transform: scale(1.2);
+}
 }
 
 @media (max-width:1024){}
