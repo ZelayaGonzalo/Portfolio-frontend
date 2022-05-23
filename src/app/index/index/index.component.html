@@ -1,9 +1,27 @@
+<app-navbar *ngIf="data.id"></app-navbar>
 <div class="index-container" *ngIf="data.id">
-    <app-banner id="home" [name]="data.name" [banner]="data.banner" [role]="data.role" style="width: 100%;" (updated)="onUpdated($event)"></app-banner>
-    <app-about id="about" [name]="data.name" [description]="data.description" [photo]="data.photo" [role]="data.role" [lastName]="data.lastName" class="max-width" (updated)="onUpdated($event)"></app-about>
+    <app-banner id="home" [name]="data.name" [banner]="data.banner" [role]="data.role" style="width: 100%"
+        (updated)="onUpdated($event)"></app-banner>
+    <app-about id="about" [name]="data.name" [description]="data.description" [photo]="data.photo" [role]="data.role"
+        [lastName]="data.lastName" class="max-width" (updated)="onUpdated($event)"></app-about>
     <app-studies class="max-width" id="studies" [history]="data.education" (updated)="onUpdated($event)"></app-studies>
     <app-skills id="skills" [skills]="data.skills" (updated)="onUpdated($event)"></app-skills>
     <app-projects id="projects" [projects]="data.projects" (reloadData)="onUpdated($event)"></app-projects>
-    <app-footer style="width: 100%;"></app-footer>
+    <app-footer style="width: 100%"></app-footer>
 </div>
-<ngx-spinner [name]="'main-spinner'" [fullScreen]="true" type="ball-spin-clockwise" size="large" bdColor="#1C1B1F"></ngx-spinner>
+<ngx-spinner [name]="'main-spinner'" [fullScreen]="true" type="ball-spin-clockwise" size="large" bdColor="#1C1B1F">
+</ngx-spinner>
+
+<div class="error-data" [ngClass]="showError ? 'show-error' : ''">
+    <p>
+        Error obteniendo data de la base datos, es posible que la app de heroku esté
+        durmiendo.
+        <br />
+        Por favor intente de nuevo en 3 minutos, si el problema persiste se
+        agradeceria un reporte a
+        <a href="mailto:zelayagonzalo33@gamil.com">zelayagonzalo33@gmail.com</a>
+        <br />
+    </p>
+    <h3 class="title">Detalle:</h3>
+    <p>{{ errotMsg }}</p>
+</div>

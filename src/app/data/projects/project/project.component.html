@@ -1,11 +1,11 @@
-<div class="project" [ngClass]="currentTheme">
+<div class="project" [ngClass]="currentTheme" [id]="'project-'+project.id">
     <ul class="project-options" *ngIf="isAdmin" [ngClass]="isIndexEven ? '':'options-reverse'">
         <li><button class="circle-button" (click)="onEditProject()" ><fa-icon [icon]="faPen"></fa-icon></button></li>
         <li><button class="circle-button cancel" (click)="onDeleteProject()"><fa-icon [icon]="faTrash"></fa-icon></button></li>
     </ul>
     <h2 class="sub-title">{{project.title}}</h2>
     <div [ngClass]="isIndexEven ? 'content':'content reverse'">
-       <div class="images">
+       <div class="images" *ngIf="galleryImages.length > 0">
            <div class="gallery">
                <gallery [autoPlay]="true" [playerInterval]="5000" [items]="galleryImages" [thumb]="false" [id]="index.toString()"></gallery>
            </div>
@@ -14,14 +14,15 @@
            <ul class="technologies">
                <li *ngFor="let technology of project.technologies">
                    <img [src]="technology.icon" [alt]="technology.name" [title]="technology.name">
+                   <p>{{technology.name}}</p>
                </li>
            </ul>
            <p class="info-description">
                {{project.description}}
            </p>
            <div class="info-options">
-               <a class="link-button" [href]="project.demoLink" target="_blank"> <fa-icon [icon]="faGlobe"></fa-icon> Demo</a>
-               <a class="link-button" [href]="project.repoLink" target="_blank"> <fa-icon [icon]="faGithub"></fa-icon>Repo</a>
+               <a *ngIf="project.demoLink" class="link-button" [href]="project.demoLink" target="_blank"> <fa-icon [icon]="faGlobe"></fa-icon> Demo</a>
+               <a *ngIf="project.repoLink" class="link-button" [href]="project.repoLink" target="_blank"> <fa-icon [icon]="faGithub"></fa-icon>Repo</a>
            </div>
        </div>
     </div>

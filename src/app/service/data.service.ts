@@ -39,6 +39,9 @@ export class DataService {
     return this.httpClient.delete(`${this.dataURL}/skills/delete?id=${id}`)
   }
 
+  public getProjects():Observable<Project[]>{
+    return this.httpClient.get<Project[]>(`${this.dataURL}/projects/all`)
+  }
   public addProject(project:Project):Observable<any>{
     return this.httpClient.post(`${this.dataURL}/projects/add`,project)
   }

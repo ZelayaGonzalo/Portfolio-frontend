@@ -8,6 +8,7 @@ import { TokenService } from 'src/app/service/token.service';
 import { inOutAnimation,zoomInAnimation } from 'src/app/models/animations';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ThemeService } from 'src/app/service/theme.service';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-projects',
@@ -50,7 +51,8 @@ export class ProjectsComponent implements OnInit {
     private tokenService:TokenService,
     private dataService:DataService,
     private spinner:NgxSpinnerService,
-    private theme:ThemeService
+    private theme:ThemeService,
+    private scroller:ViewportScroller
   ) { }
 
   ngOnInit(): void {
@@ -87,7 +89,6 @@ export class ProjectsComponent implements OnInit {
   }
   receiveImages(images:Images[]):void{
     this.images = images
-    console.log(this.images)
   }
 
   onReloadData(reload:boolean):void{
@@ -117,8 +118,7 @@ export class ProjectsComponent implements OnInit {
           next:data=>{
             this.spinner.hide('projects-spinner')
             this.isAddingProject = false
-            this.reloadData.emit(true)
-            
+            this.reloadProjects(this.projectID != undefined)
           },
           error:err=>{
            window.alert('Error guardando proyecto')
@@ -139,4 +139,16 @@ export class ProjectsComponent implements OnInit {
     this.images = []
   }
 
+  reloadProjects(exists:boolean){
+    this.dataService.getProjects().subscribe(
+      {
+        next:data=>{
+          this.projects = data
+          if(!exists){
+            window.scrollTo(0, document.body.scrollHeight)
+          }
+        }
+      }
+    )
+  }
 }

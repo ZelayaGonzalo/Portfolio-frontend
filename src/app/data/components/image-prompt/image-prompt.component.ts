@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faCheck, faRotateRight, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Images } from 'src/app/models/project-image';
 import { inOutAnimation } from 'src/app/models/animations';
-import { useAnimation } from '@angular/animations';
+import { ThemeService } from 'src/app/service/theme.service';
 @Component({
   selector: 'app-image-prompt',
   templateUrl: './image-prompt.component.html',
@@ -27,13 +27,19 @@ export class ImagePromptComponent implements OnInit {
   format:string = 'mobile'
 
   previewImage:string = ''
+  currentTheme:string ='night'
 
-  constructor() { }
+  constructor(
+    private theme:ThemeService
+  ) { }
 
   ngOnInit(): void {
     if(this.isBanner){
       this.format = 'banner'
     }
+    this.theme.getTheme().subscribe(
+      theme=>{this.currentTheme=theme}
+    )
   }
 
   onPreview(){

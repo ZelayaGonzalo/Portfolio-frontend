@@ -1,10 +1,10 @@
-<div class="image-prompt">
+<div class="image-prompt" [ngClass]="currentTheme">
     <div class="content" *ngIf="closeWindow">
         <h3 class="title">Agregar Imagen</h3>
-        <form>
-            <label for="url"> URL: 
-                <input type="text" name="url" id="url" [(ngModel)]="url">
-                <button class="load-image-button" (click)="onPreview()"> <fa-icon [icon]="faRotateRight"></fa-icon> </button>
+        <form ngNativeValidate>
+            <label for="url" (ngSubmit)="onSave()"> <p>URL:</p>
+                <input type="text" name="url" id="url" [(ngModel)]="url" required="">
+                <button class="circle-button" (click)="onPreview()"> <fa-icon [icon]="faRotateRight"></fa-icon> </button>
             </label>
             <label for="format" *ngIf="!isBanner" >
                 Formato: 
@@ -13,13 +13,13 @@
                     <option value="desktop">Desktop</option>
                 </select>
             </label>
+            <div class="preview">
+                <img [src]="previewImage" alt="No se pudo cargar imagen" >
+            </div>
+            <div class="buttons">
+                <button class="circle-button" type="submit"><fa-icon [icon]="faCheck" ></fa-icon></button>
+                <button class="circle-button cancel" type="button" (click)="onCancel()"><fa-icon [icon]="faXMark"></fa-icon></button>
+            </div>
         </form>
-        <div class="preview">
-            <img [src]="previewImage" alt="No se pudo cargar imagen" >
-        </div>
-        <div class="buttons">
-            <button class="edit-button" (click)="onSave()"><fa-icon [icon]="faCheck" ></fa-icon></button>
-            <button class="edit-button cancel" (click)="onCancel()"><fa-icon [icon]="faXMark"></fa-icon></button>
-        </div>
     </div>
 </div>

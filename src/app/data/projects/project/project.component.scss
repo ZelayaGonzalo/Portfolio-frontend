@@ -21,6 +21,7 @@ $cancel:#F15152;
         width: 100%;
         font-size: 15px;
         font-weight: 500;
+        justify-content: center;
         .images{
             width: 40%;
             height: 400px;
@@ -70,6 +71,9 @@ $cancel:#F15152;
             .technologies{
                 display: flex;
                 li{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
                     margin: 5px;
                     transition: 0.3s;
                     img{
@@ -82,7 +86,7 @@ $cancel:#F15152;
                 }
             }
             .info-description{
-                padding: 5px;
+                padding: 5px 10px;
             }
             .info-options{
                 .link-button{

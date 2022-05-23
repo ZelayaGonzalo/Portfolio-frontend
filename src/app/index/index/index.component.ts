@@ -12,6 +12,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class IndexComponent implements OnInit {
 
   data=<Data>{}
+  showError = false
+  errotMsg:string = ''
 
   constructor(
     private dataService: DataService,
@@ -24,11 +26,12 @@ export class IndexComponent implements OnInit {
     this.dataService.data().subscribe(
       {next: data=>{
         this.data = data
-        console.log(data)
         this.spinner.hide('main-spinner')
       },
       error:err=>{
-        console.log('error')
+        this.showError = true
+        this.errotMsg = err.message
+        this.spinner.hide('main-spinner')
       }
     }
     )

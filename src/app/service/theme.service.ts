@@ -9,23 +9,21 @@ export class ThemeService {
   private theme: BehaviorSubject<string>
   constructor(
   ) {
-    this.theme = new BehaviorSubject<string>("night")
-   }
-
-   setPrimaryColor(color:string):void{
-     this.theme.next(color)
+    this.theme = new BehaviorSubject<string>(window.localStorage.getItem('THEME') || 'night')
    }
 
    setNightTheme():void{
+     window.localStorage.setItem('THEME','night')
      this.theme.next("night")
    }
 
    setLigthTheme():void{
+     window.localStorage.setItem('THEME','light')
      this.theme.next("light")
    }
 
    getTheme():Observable<string>{
-     return this.theme.asObservable()
+    return this.theme.asObservable()
    }
 
 }
