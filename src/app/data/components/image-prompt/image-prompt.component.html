@@ -1,10 +1,10 @@
 <div class="image-prompt" [ngClass]="currentTheme">
     <div class="content" *ngIf="closeWindow">
         <h3 class="title">Agregar Imagen</h3>
-        <form ngNativeValidate>
-            <label for="url" (ngSubmit)="onSave()"> <p>URL:</p>
+        <form ngNativeValidate (ngSubmit)="onSave()">
+            <label for="url"> <p>URL:</p>
                 <input type="text" name="url" id="url" [(ngModel)]="url" required="">
-                <button class="circle-button" (click)="onPreview()"> <fa-icon [icon]="faRotateRight"></fa-icon> </button>
+                <button type="button" class="circle-button" (click)="onPreview()"> <fa-icon [icon]="faRotateRight"></fa-icon> </button>
             </label>
             <label for="format" *ngIf="!isBanner" >
                 Formato: 

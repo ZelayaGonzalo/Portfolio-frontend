@@ -27,6 +27,7 @@ import { ImagesSelectorComponent } from './data/projects/images-selector/images-
 import { ImagePromptComponent } from './data/components/image-prompt/image-prompt.component';
 import { FooterComponent } from './footer/footer.component';
 import { StudiesComponent } from './data/studies/studies.component';
+import { CurrentViewDirective } from './directives/current-view.directive';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { StudiesComponent } from './data/studies/studies.component';
     ImagesSelectorComponent,
     ImagePromptComponent,
     FooterComponent,
-    StudiesComponent
+    StudiesComponent,
+    CurrentViewDirective
     ],
   imports: [
     BrowserModule,
