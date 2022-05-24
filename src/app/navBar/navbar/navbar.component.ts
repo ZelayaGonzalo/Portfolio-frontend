@@ -11,6 +11,7 @@ import { Theme } from 'src/app/models/theme';
 
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ThemeService } from 'src/app/service/theme.service';
+import { ScrollService } from 'src/app/service/scroll.service';
 
 @Component({
   selector: 'app-navbar',
@@ -50,7 +51,8 @@ export class NavbarComponent implements OnInit {
   showMobileMenu = false
 
   currentTheme:string = 'night'
-  
+  currentView:number = 0
+
   //Auth
   errorLogin = false
   errorRegistro = false
@@ -72,6 +74,7 @@ export class NavbarComponent implements OnInit {
     private spinner:NgxSpinnerService,
     public theme:ThemeService,
     private renderer:Renderer2,
+    private scrollService:ScrollService
   ) { }
 
   ngOnInit(): void { 
@@ -86,6 +89,11 @@ export class NavbarComponent implements OnInit {
       this.renderer.removeClass(document.body,'light')
       this.renderer.addClass(document.body, this.currentTheme);
     })
+    this.scrollService.getCurrentView().subscribe(
+      {next:data=>{
+        this.currentView = data
+      }}
+    )
   }
 
   toogleMobileMenu():void{
@@ -134,7 +142,7 @@ export class NavbarComponent implements OnInit {
   }
 
   onSelect(selection:number):void{
-    this.selected = selection
+    this.scrollService.setCurrentView(selection)
   }
 
   onShowLogin():void{

@@ -20,7 +20,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { GalleryModule } from 'ng-gallery';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
-import { SharedVariableService } from './service/shared-variable.service';
 import { ProjectComponent } from './data/projects/project/project.component';
 import { SkillsSelectorComponent } from './data/projects/skills-selector/skills-selector.component';
 import { ImagesSelectorComponent } from './data/projects/images-selector/images-selector.component';
@@ -57,7 +56,7 @@ import { CurrentViewDirective } from './directives/current-view.directive';
     GalleryModule,
     NgxSpinnerModule
   ],
-  providers: [interceptorProvider, SharedVariableService],
+  providers: [interceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

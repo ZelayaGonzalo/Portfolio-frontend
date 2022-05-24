@@ -7,19 +7,19 @@
     <ul class="links item">
         <li >
             <a (click)="onSelect(0)" href="#home">Inicio</a>
-            <div [ngClass]="selected === 0 ? 'selected':'hide'"></div>
+            <div [ngClass]="currentView === 0 ? 'selected':'hide'"></div>
         </li>
         <li >
             <a  (click)="onSelect(1)" href="#about" >Sobre mi</a>
-            <div [ngClass]="selected === 1 ? 'selected':'hide'"></div>
+            <div [ngClass]="currentView === 1 ? 'selected':'hide'"></div>
         </li>
         <li >
             <a href="#skills" (click)="onSelect(2)">Habilidades</a>
-            <div [ngClass]="selected === 2 ? 'selected':'hide'"></div>
+            <div [ngClass]="currentView === 2 ? 'selected':'hide'"></div>
         </li>
         <li >
             <a href="#projects" (click)="onSelect(3)">Proyectos</a>
-            <div [ngClass]="selected === 3 ? 'selected':'hide'"></div>
+            <div [ngClass]="currentView === 3 ? 'selected':'hide'"></div>
         </li>
     </ul>
     <button class="mobile-hamburguer item" (click)="toogleMobileMenu()">
@@ -89,19 +89,19 @@
         <ul class="links">
             <li >
                 <a (click)="onSelect(0)" href="#home">Inicio</a>
-                <div [ngClass]="selected === 0 ? 'selected':'hide'"></div>
+                <div [ngClass]="currentView === 0 ? 'selected':'hide'"></div>
             </li>
             <li >
                 <a  (click)="onSelect(1)" href="#about" >Sobre mi</a>
-                <div [ngClass]="selected === 1 ? 'selected':'hide'"></div>
+                <div [ngClass]="currentView === 1 ? 'selected':'hide'"></div>
             </li>
             <li >
                 <a href="#skills" (click)="onSelect(2)">Habilidades</a>
-                <div [ngClass]="selected === 2 ? 'selected':'hide'"></div>
+                <div [ngClass]="currentView === 2 ? 'selected':'hide'"></div>
             </li>
             <li >
                 <a href="#projects" (click)="onSelect(3)">Proyectos</a>
-                <div [ngClass]="selected === 3 ? 'selected':'hide'"></div>
+                <div [ngClass]="currentView === 3 ? 'selected':'hide'"></div>
             </li>
             <li>
                 <div class="ap-logo">

@@ -6,6 +6,7 @@ import { TokenService } from 'src/app/service/token.service';
 import { zoomInAnimation } from 'src/app/models/animations';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ThemeService } from 'src/app/service/theme.service';
+import { ScrollService } from 'src/app/service/scroll.service';
 
 @Component({
   selector: 'app-studies',
@@ -44,7 +45,8 @@ export class StudiesComponent implements OnInit,OnChanges {
     private tokenService:TokenService,
     private dataService:DataService,
     private spinner:NgxSpinnerService,
-    private theme:ThemeService
+    private theme:ThemeService,
+    private scroll:ScrollService
   ) { }
 
   ngOnInit(): void {
@@ -148,6 +150,10 @@ export class StudiesComponent implements OnInit,OnChanges {
     this.startYear = 2000
     this.endYear = 2050
     this.finished = false
+  }
+
+  inView(isInView:boolean):void{
+    if(isInView) this.scroll.setCurrentView(1)
   }
 
 }

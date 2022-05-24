@@ -7,6 +7,7 @@ import { Images } from 'src/app/models/project-image';
 import { zoomInAnimation } from 'src/app/models/animations';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ThemeService } from 'src/app/service/theme.service';
+import { ScrollService } from 'src/app/service/scroll.service';
 
 @Component({
   selector: 'app-about',
@@ -47,7 +48,8 @@ export class AboutComponent implements OnInit {
    private dataService:DataService,
    private tokenService:TokenService,
    private spinner:NgxSpinnerService,
-   private theme:ThemeService
+   private theme:ThemeService,
+   private scroll:ScrollService
   ) { }
 
   ngOnInit(): void {
@@ -106,6 +108,10 @@ export class AboutComponent implements OnInit {
     this.photo = this.backupPhoto
     this.description = this.backupDescription
     this.isEditing = false
+  }
+
+  inView(isInView:boolean):void{
+    if(isInView) this.scroll.setCurrentView(1)
   }
 
 }

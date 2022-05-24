@@ -6,6 +6,7 @@ import { DataService } from 'src/app/service/data.service';
 import { zoomInAnimation } from 'src/app/models/animations';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ThemeService } from 'src/app/service/theme.service';
+import { ScrollService } from 'src/app/service/scroll.service';
 
 
 //TODO add validation
@@ -52,7 +53,8 @@ export class SkillsComponent implements OnInit {
     private tokenService:TokenService,
     private dataService:DataService,
     private spinner:NgxSpinnerService,
-    private theme:ThemeService
+    private theme:ThemeService,
+    private scroll:ScrollService
   ) { }
 
   ngOnInit(): void {
@@ -161,6 +163,10 @@ export class SkillsComponent implements OnInit {
       }
       )
     }
+  }
+
+  inView(isInView:boolean):void{
+    if(isInView) this.scroll.setCurrentView(2)
   }
 
 }

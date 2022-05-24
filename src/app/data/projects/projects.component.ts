@@ -8,7 +8,7 @@ import { TokenService } from 'src/app/service/token.service';
 import { inOutAnimation,zoomInAnimation } from 'src/app/models/animations';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ThemeService } from 'src/app/service/theme.service';
-import { ViewportScroller } from '@angular/common';
+import { ScrollService } from 'src/app/service/scroll.service';
 
 @Component({
   selector: 'app-projects',
@@ -52,7 +52,7 @@ export class ProjectsComponent implements OnInit {
     private dataService:DataService,
     private spinner:NgxSpinnerService,
     private theme:ThemeService,
-    private scroller:ViewportScroller
+    private scroll:ScrollService
   ) { }
 
   ngOnInit(): void {
@@ -151,4 +151,9 @@ export class ProjectsComponent implements OnInit {
       }
     )
   }
+
+  inView(isInView:boolean):void{
+    if(isInView) this.scroll.setCurrentView(3)
+  }
+
 }

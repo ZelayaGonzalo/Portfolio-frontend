@@ -1,30 +1,32 @@
-<section class="education" [ngClass]="currentTheme">
-    <h1 class="title">EDUCACIÓN</h1>
-    <button *ngIf="isAdmin" class="edit-button" (click)="openEditWindow()"><fa-icon [icon]="faPlus"></fa-icon></button>
-    <ul class="history">
-        <li id="start-li">
-            <span class="border-circle start"></span>
-        </li>
-        <li *ngFor="let item of history">
-            <span class="border-circle">
-                <button class="edit" *ngIf="isAdmin" (click)="onStartEditing(item)">
-                    <fa-icon [icon]="faPen"></fa-icon>
-                </button>
-            </span>
-            <div class="info">
-                <h3 class="institution">{{item.institution}}</h3>
-                <p class="degree" *ngIf="item.degree">{{item.degree}}</p>
-                <p class="years">{{item.startYear}} - 
-                    <span *ngIf="item.endYear <= currentYear">{{item.endYear}}</span>
-                    <span *ngIf="item.endYear > currentYear">Presente</span>
-                </p>
-            </div>
-        </li>
-        <li id="start-li">
-            <span class="border-circle start"></span>
-        </li>
-    </ul>
-</section>
+<ng-template [isInView] (isInView)="inView($event)">
+    <section class="education" [ngClass]="currentTheme">
+        <h1 class="title">EDUCACIÓN</h1>
+        <button *ngIf="isAdmin" class="edit-button" (click)="openEditWindow()"><fa-icon [icon]="faPlus"></fa-icon></button>
+        <ul class="history">
+            <li id="start-li">
+                <span class="border-circle start"></span>
+            </li>
+            <li *ngFor="let item of history">
+                <span class="border-circle">
+                    <button class="edit" *ngIf="isAdmin" (click)="onStartEditing(item)">
+                        <fa-icon [icon]="faPen"></fa-icon>
+                    </button>
+                </span>
+                <div class="info">
+                    <h3 class="institution">{{item.institution}}</h3>
+                    <p class="degree" *ngIf="item.degree">{{item.degree}}</p>
+                    <p class="years">{{item.startYear}} - 
+                        <span *ngIf="item.endYear <= currentYear">{{item.endYear}}</span>
+                        <span *ngIf="item.endYear > currentYear">Presente</span>
+                    </p>
+                </div>
+            </li>
+            <li id="start-li">
+                <span class="border-circle start"></span>
+            </li>
+        </ul>
+    </section>
+</ng-template>
 
 <div class="edit-window" [ngClass]="currentTheme" *ngIf="isEditing" [@zoominAnimation]>
     <div class="form-section">

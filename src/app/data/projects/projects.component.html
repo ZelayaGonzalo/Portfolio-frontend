@@ -1,20 +1,21 @@
-<section class="projects-section" [ngClass]="currentTheme">
-  <h1 class="title">PROYECTOS</h1>
-  <button class="edit-button" *ngIf="isAdmin" (click)="openAddProject()">
-    <fa-icon [icon]="faPlus"></fa-icon>
-  </button>
-  <ul class="projects">
-    <app-project
-      [project]="item"
-      [index]="i"
-      [currentTheme]="currentTheme"
-      *ngFor="let item of projects; let i = index"
-      (reloadData)="onReloadData($event)"
-      (editProject)="onEditProject($event)"
-    ></app-project>
-  </ul>
-</section>
-
+<ng-template [isInView] (isInView)="inView($event)">
+  <section class="projects-section" [ngClass]="currentTheme">
+    <h1 class="title">PROYECTOS</h1>
+    <button class="edit-button" *ngIf="isAdmin" (click)="openAddProject()">
+      <fa-icon [icon]="faPlus"></fa-icon>
+    </button>
+    <ul class="projects">
+      <app-project
+        [project]="item"
+        [index]="i"
+        [currentTheme]="currentTheme"
+        *ngFor="let item of projects; let i = index"
+        (reloadData)="onReloadData($event)"
+        (editProject)="onEditProject($event)"
+      ></app-project>
+    </ul>
+  </section>
+</ng-template>
 <div class="project-popup" [ngClass]="currentTheme" *ngIf="isAddingProject" [@zoominAnimation]>
   <div class="popup-section">
     <button class="edit-button cancel" (click)="closeAddProject()">

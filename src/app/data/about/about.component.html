@@ -1,4 +1,5 @@
-<section class="about-me text-width" [ngClass]="currentTheme" *isInView>
+<ng-template [isInView] (isInView)="inView($event)">
+<section class="about-me text-width" [ngClass]="currentTheme" >
     <h1 class="title">
         SOBRE MI
     </h1>
@@ -36,5 +37,5 @@
     </button>
     <ngx-spinner name="about-spinner" type="ball-spin-clockwise" [fullScreen]="false" [color]="currentTheme ==='light'?'#2D3142':'white'" [bdColor]="currentTheme ==='light'?'#FBFBFF':'#1C1B1F'"></ngx-spinner>
 </section>
-
+</ng-template>
 <app-image-prompt *ngIf="isAddingImage" [isBanner]="true" (closeWindow)="closeImageWindow($event)" (selectedImage)="receivePhoto($event)" class="pop-up" [@zoominAnimation]></app-image-prompt>
