@@ -73,7 +73,7 @@
 <div class="edit-window" [ngClass]="currentTheme" *ngIf="isAddingSkill" [@zoominAnimation] >
     <div class="form-section">
         <form  (ngSubmit)="onAddSkill()" ngNativeValidate>
-            <h3 class="title">Agregar Skill</h3>
+            <h3 class="title">Agregar Habilidad</h3>
             <label for="name">Nombre:</label>
             <input type="text" id="name" name="name" [(ngModel)]="name" required>
             <label for="icon">Icono(Link a imagen):</label>
@@ -97,7 +97,7 @@
 <div class="edit-window" [ngClass]="currentTheme" *ngIf="isEditingSkill" [@zoominAnimation]>
     <div class="form-section">
         <form  (ngSubmit)="onEditSkill()" ngNativeValidate>
-            <h3 class="title">Editar Skill</h3>
+            <h3 class="title">Editar Habilidad</h3>
             <label for="name">Nombre:</label>
             <input type="text" id="name" name="name" [(ngModel)]="name" required>
             <label for="icon">Icono(Link a imagen):</label>

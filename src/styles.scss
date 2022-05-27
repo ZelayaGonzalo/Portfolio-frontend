@@ -13,6 +13,15 @@ $cancel:#F15152;
     font-family: 'Roboto';
 }
 
+input{
+    border: 1px solid white;
+    background-color: $black-background;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 14px;
+    border-radius: 2px;
+    padding: 10px 5px;
+  }
 
 ul,ol,li{
     list-style-type: none;

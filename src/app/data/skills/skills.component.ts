@@ -5,7 +5,6 @@ import { faPen,faTrash,faFloppyDisk, faPlus, faXmark } from '@fortawesome/free-s
 import { DataService } from 'src/app/service/data.service';
 import { zoomInAnimation } from 'src/app/models/animations';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { ThemeService } from 'src/app/service/theme.service';
 import { ScrollService } from 'src/app/service/scroll.service';
 
 
@@ -36,6 +35,7 @@ export class SkillsComponent implements OnInit {
 
   editableSkill:Skill = <Skill>{}
 
+  @Input() currentTheme = 'night'
   @Input() skills:Skill[]=[]
   @Output() updated = new EventEmitter<boolean>()
 
@@ -47,20 +47,16 @@ export class SkillsComponent implements OnInit {
   isAddingSkill = false
   isEditingSkill = false
   isAdmin = false
-  currentTheme = 'night'
 
   constructor(
     private tokenService:TokenService,
     private dataService:DataService,
     private spinner:NgxSpinnerService,
-    private theme:ThemeService,
     private scroll:ScrollService
   ) { }
 
   ngOnInit(): void {
     this.isAdmin = this.tokenService.isAdmin()
-    this.theme.getTheme().subscribe(theme=>{
-      this.currentTheme = theme})
   }
 
   ngOnChanges():void{

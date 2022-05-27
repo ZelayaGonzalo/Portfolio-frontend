@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, Input, OnInit, Renderer2 } from '@angular/core';
 import { LoginUsuario } from 'src/app/models/login-usuario';
 import { NuevoUsuario } from 'src/app/models/nuevo-usuario';
 import { style,trigger,animate,state, transition } from '@angular/animations';
@@ -7,7 +7,6 @@ import { inOutAnimation } from 'src/app/models/animations';
 //Services
 import { AuthService } from 'src/app/service/auth.service';
 import { TokenService } from 'src/app/service/token.service';
-import { Theme } from 'src/app/models/theme';
 
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ThemeService } from 'src/app/service/theme.service';
@@ -49,8 +48,8 @@ export class NavbarComponent implements OnInit {
   showLogin = false
   showRegister = false
   showMobileMenu = false
-
-  currentTheme:string = 'night'
+  
+  @Input() currentTheme:string = 'night'
   currentView:number = 0
 
   //Auth
@@ -73,7 +72,6 @@ export class NavbarComponent implements OnInit {
     private authService:AuthService,
     private spinner:NgxSpinnerService,
     public theme:ThemeService,
-    private renderer:Renderer2,
     private scrollService:ScrollService
   ) { }
 
@@ -83,12 +81,6 @@ export class NavbarComponent implements OnInit {
     if(this.isLogged){
       this.user = this.tokenService.getUserName()
     }
-    this.theme.getTheme().subscribe(theme=>{
-      this.currentTheme = theme
-      this.renderer.removeClass(document.body,'night')
-      this.renderer.removeClass(document.body,'light')
-      this.renderer.addClass(document.body, this.currentTheme);
-    })
     this.scrollService.getCurrentView().subscribe(
       {next:data=>{
         this.currentView = data

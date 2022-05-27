@@ -5,7 +5,6 @@ import { DataService } from 'src/app/service/data.service';
 import { TokenService } from 'src/app/service/token.service';
 import { zoomInAnimation } from 'src/app/models/animations';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { ThemeService } from 'src/app/service/theme.service';
 import { ScrollService } from 'src/app/service/scroll.service';
 
 @Component({
@@ -24,13 +23,14 @@ export class StudiesComponent implements OnInit,OnChanges {
   faTrash = faTrash
   faFloppyDisk = faFloppyDisk
 
+  @Input() currentTheme:string = 'night'
   @Input() history:Education[] =[]
   @Output() updated = new EventEmitter<boolean>()
+
   arranged: Education[] =[]
 
   isAdmin = false
   isEditing = false
-  currentTheme:string = 'night'
 
   currentID:number | undefined = undefined
   institution:string = ''
@@ -45,7 +45,6 @@ export class StudiesComponent implements OnInit,OnChanges {
     private tokenService:TokenService,
     private dataService:DataService,
     private spinner:NgxSpinnerService,
-    private theme:ThemeService,
     private scroll:ScrollService
   ) { }
 
@@ -55,8 +54,6 @@ export class StudiesComponent implements OnInit,OnChanges {
     this.history.sort(
       (a,b)=>a.startYear - b.startYear
     )
-    this.theme.getTheme().subscribe(theme=>{
-      this.currentTheme = theme})
   }
   ngOnChanges():void{
     this.history.sort(

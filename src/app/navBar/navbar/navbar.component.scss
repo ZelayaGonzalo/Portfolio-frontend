@@ -23,10 +23,12 @@ $text:white;
         display: flex;
         padding: 0 10px;
         align-items: center;
+        text-decoration: none;
         img{
             height: 50%;
         }
         p{
+            color: $text;
             font-weight: bold;
             margin: 0;
             margin-left: 5px;
@@ -257,6 +259,11 @@ $text:white;
     $text:#2D3142;
     background-color: $background;
     color: $text;
+    .logo{
+        p{
+            color: $text;
+        }
+    }
     .links{
         li{
             .selected{

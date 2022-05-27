@@ -16,7 +16,7 @@ export class CurrentViewDirective {
     const observer = new IntersectionObserver(([entry]) => {
       this.isInView.emit(entry.isIntersecting)
       this.renderContents(true)
-    },{threshold:0.25})
+    },{threshold:0.10})
     observer.observe(observedElement)
   }
 

@@ -1,9 +1,9 @@
 <div class="nav-container" [ngClass]="currentTheme">
-    <div class="logo item">
+    <a href="https://www.argentina.gob.ar/produccion/transformacion-digital-y-economia-del-conocimiento/argentina-programa" target="_blank" class="logo item">
        <img *ngIf="currentTheme === 'night'" src="../../../assets/Icons/APLogo-20-20.webp">
        <img *ngIf="currentTheme === 'light'" src="../../../assets/Icons/APLogo-20-20-Light.webp">
        <p >#YoProgramo</p>
-    </div>
+    </a>
     <ul class="links item">
         <li >
             <a (click)="onSelect(0)" href="#home">Inicio</a>
@@ -104,11 +104,11 @@
                 <div [ngClass]="currentView === 3 ? 'selected':'hide'"></div>
             </li>
             <li>
-                <div class="ap-logo">
+                <a href="https://www.argentina.gob.ar/produccion/transformacion-digital-y-economia-del-conocimiento/argentina-programa" target="_blank" class="ap-logo">
                     <img *ngIf="currentTheme === 'night'" src="../../../assets/Icons/APLogo-20-20.webp">
                     <img *ngIf="currentTheme === 'light'" src="../../../assets/Icons/APLogo-20-20-Light.webp">
                     <p >#YoProgramo</p>
-                </div>
+                </a>
             </li>
         </ul>
     </div>

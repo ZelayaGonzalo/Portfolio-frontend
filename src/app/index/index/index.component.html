@@ -1,16 +1,15 @@
-<app-navbar *ngIf="data.id"></app-navbar>
+<app-navbar *ngIf="data.id" [currentTheme]="currentTheme"></app-navbar>
 <div class="index-container" *ngIf="data.id">
-    <app-banner id="home" [name]="data.name" [banner]="data.banner" [role]="data.role" style="width: 100%"
+    <app-banner id="home" [currentTheme]="currentTheme" [name]="data.name" [banner]="data.banner" [role]="data.role" style="width: 100%"
         (updated)="onUpdated($event)"></app-banner>
-    <app-about id="about" [name]="data.name" [description]="data.description" [photo]="data.photo" [role]="data.role"
+    <app-about [currentTheme]="currentTheme" id="about" [name]="data.name" [description]="data.description" [photo]="data.photo" [role]="data.role"
         [lastName]="data.lastName" class="max-width" (updated)="onUpdated($event)"></app-about>
-    <app-studies class="max-width" id="studies" [history]="data.education" (updated)="onUpdated($event)"></app-studies>
-    <app-skills id="skills" [skills]="data.skills" (updated)="onUpdated($event)"></app-skills>
-    <app-projects id="projects" [projects]="data.projects" (reloadData)="onUpdated($event)"></app-projects>
-    <app-footer style="width: 100%"></app-footer>
+    <app-studies [currentTheme]="currentTheme" class="max-width" id="studies" [history]="data.education" (updated)="onUpdated($event)"></app-studies>
+    <app-skills [currentTheme]="currentTheme" id="skills" [skills]="data.skills" (updated)="onUpdated($event)"></app-skills>
+    <app-projects [currentTheme]="currentTheme" id="projects" [projects]="data.projects" (reloadData)="onUpdated($event)"></app-projects>
+    <app-footer style="width: 100%" [currentTheme]="currentTheme"></app-footer>
 </div>
-<ngx-spinner [name]="'main-spinner'" [fullScreen]="true" type="ball-spin-clockwise" size="large" bdColor="#1C1B1F">
-</ngx-spinner>
+<ngx-spinner name="main-spinner" type="ball-spin-clockwise" [fullScreen]="false" [color]="currentTheme ==='light'?'#2D3142':'white'" [bdColor]="currentTheme ==='light'?'#FBFBFF':'#1C1B1F'"></ngx-spinner>
 
 <div class="error-data" [ngClass]="showError ? 'show-error' : ''">
     <p>

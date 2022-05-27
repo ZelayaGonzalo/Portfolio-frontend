@@ -7,7 +7,6 @@ import { DataService } from 'src/app/service/data.service';
 import { TokenService } from 'src/app/service/token.service';
 import { inOutAnimation,zoomInAnimation } from 'src/app/models/animations';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { ThemeService } from 'src/app/service/theme.service';
 import { ScrollService } from 'src/app/service/scroll.service';
 
 @Component({
@@ -34,9 +33,10 @@ export class ProjectsComponent implements OnInit {
 
   @Output() reloadData = new EventEmitter<boolean>()
   @Input() projects:Project[] = []
+  @Input() currentTheme:string = 'night'
 
   isAdmin = false
-  currentTheme:string = 'night'
+  
 
   //Add Project
   projectID: number | undefined
@@ -51,14 +51,11 @@ export class ProjectsComponent implements OnInit {
     private tokenService:TokenService,
     private dataService:DataService,
     private spinner:NgxSpinnerService,
-    private theme:ThemeService,
     private scroll:ScrollService
   ) { }
 
   ngOnInit(): void {
     this.isAdmin = this.tokenService.isAdmin()
-    this.theme.getTheme().subscribe(theme=>{
-      this.currentTheme = theme})
   }
 
   openAddProject():void{

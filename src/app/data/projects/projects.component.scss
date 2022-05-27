@@ -199,6 +199,10 @@ $save:#039487;
   .project-popup {
     .popup-section {
       .form {
+        label{
+          align-items: center;
+          width: 100%;
+        }
         .label-title {
           padding: 5px;
           display: flex;
@@ -208,6 +212,8 @@ $save:#039487;
           width: 95%;
         }
         .links {
+          width: 100%;
+          padding: 5px;
           label {
             display: flex;
             justify-content: space-between;
