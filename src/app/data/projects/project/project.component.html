@@ -17,8 +17,7 @@
                    <p>{{technology.name}}</p>
                </li>
            </ul>
-           <p class="info-description">
-               {{project.description}}
+           <p class="info-description" [innerHtml]="project.description">
            </p>
            <div class="info-options">
                <a *ngIf="project.demoLink" class="link-button" [href]="project.demoLink" target="_blank"> <fa-icon [icon]="faGlobe"></fa-icon> Demo</a>

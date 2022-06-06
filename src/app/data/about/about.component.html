@@ -20,8 +20,8 @@
             <input *ngIf="isEditing" class="edit-field" type="text" [(ngModel)]="role">
         </figure>
         
-        <p *ngIf="!isEditing" class="text-intro">
-            {{description}}
+        <p *ngIf="!isEditing" class="text-intro" [innerHTML]="description">
+            
         </p>
         <textarea *ngIf="isEditing" class="text-intro edit-field text-field" [(ngModel)]="description"></textarea>
        
