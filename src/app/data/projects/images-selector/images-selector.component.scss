@@ -13,8 +13,9 @@
 }
 .images-list{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     width: 100%;
-    overflow-x: auto;
     li{
         .edit-button{
             left: auto;
